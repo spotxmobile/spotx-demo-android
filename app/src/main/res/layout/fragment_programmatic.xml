@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.spotxchange.spotxadtest.ProgrammaticFragment">
+    tools:context="com.spotxchange.demo.ProgrammaticFragment">
 
     <EditText
         android:id="@+id/edittext_programmatic_channel_id"
