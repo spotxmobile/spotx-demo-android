@@ -1,4 +1,4 @@
-package com.spotxchange.spotxadtest;
+package com.spotxchange.demo;
 
 import android.app.Fragment;
 import android.os.Bundle;

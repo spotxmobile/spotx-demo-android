@@ -4,7 +4,7 @@ android {
     compileSdkVersion 19
     buildToolsVersion '19.1.0'
     defaultConfig {
-        applicationId 'com.spotxchange.spotxadtest'
+        applicationId 'com.spotxchange.demo'
         minSdkVersion 15
         targetSdkVersion 19
         versionCode 1
@@ -24,4 +24,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('libs/SpotXMraid.jar')
     compile 'com.google.android.gms:play-services:+'
+    compile 'net.hockeyapp.android:HockeySDK:3.0.2'
 }

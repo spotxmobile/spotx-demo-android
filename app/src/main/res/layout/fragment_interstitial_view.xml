@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.spotxchange.spotxadtest.InterstitialViewFragment">
+    tools:context="com.spotxchange.demo.InterstitialViewFragment">
 
     <EditText
         android:id="@+id/edittext_launch_interstitial_view_channel_id"
