@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.spotxchange.spotxadtest.XmlFragment">
+
+    <EditText
+        android:id="@+id/edittext_xml_channel_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="25sp"
+        android:inputType="number"
+        android:textColorHint="@color/common_signin_btn_light_text_disabled"/>
+
+    <Button
+        android:id="@+id/button_change_xml_channel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/edittext_xml_channel_id"
+
+        android:text="Change XML channel"
+        android:textColor="@android:color/holo_green_light"/>
+    
+    <com.spotxchange.integration.mraid.SpotXView
+        android:id="@+id/inline_spotx_ad_example"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_below="@id/button_change_xml_channel"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
+
+</RelativeLayout>
