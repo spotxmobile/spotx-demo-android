@@ -10,6 +10,21 @@ android {
         versionCode 1
         versionName '1.0'
     }
+
+    // NOTE: Building a release build uses 3 environment variables:
+    //   KEYSTORE        - Path to the keystore containing the signing key "spotx"
+    //   KEYSTORE_PASSWD - Keystore password
+    //   KEY_PASSWD      - Password for the "spotx" signing key
+    signingConfigs {
+        release {
+            if (System.getenv("KEYSTORE")) {
+                storeFile file(System.getenv("KEYSTORE"))
+                storePassword System.getenv("KEYSTORE_PASSWD")
+                keyAlias "spotx"
+                keyPassword System.getenv("KEY_PASSWD")
+            }
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -21,8 +36,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile files('libs/SpotXMraid.jar')
     compile 'com.google.android.gms:play-services:+'
     compile 'net.hockeyapp.android:HockeySDK:3.0.2'
+    compile project(':..:spotx-sdk-android')
 }
