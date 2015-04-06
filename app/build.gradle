@@ -1,14 +1,17 @@
 apply plugin: 'android'
 
+def VERSION_CODE = (new Date()).format('yyyyMMddHH').toInteger()
+
 android {
     compileSdkVersion 19
     buildToolsVersion '19.1.0'
+
     defaultConfig {
         applicationId 'com.spotxchange.demo'
         minSdkVersion 15
         targetSdkVersion 19
-        versionCode 1
         versionName '1.0'
+        versionCode VERSION_CODE
     }
 
     // NOTE: Building a release build uses 3 environment variables:

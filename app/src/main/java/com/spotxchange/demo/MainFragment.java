@@ -1,7 +1,9 @@
 package com.spotxchange.demo;
 
-import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,14 +12,19 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.spotxchange.integration.mraid.information.AdvertisingInformation;
 
 public class MainFragment extends Fragment {
+    private final String TAG = MainFragment.class.getSimpleName();
 
     Button mInterstitialActivityButton;
     Button mProgrammticButton;
     Button mXmlButton;
     Button mInterstitialViewButton;
     Button mCookiesButton;
+    TextView mVersionLabel;
     WebView mCookieWebView;
 
     RelativeLayout mMainLayout;
@@ -56,9 +63,13 @@ public class MainFragment extends Fragment {
         mXmlButton = (Button) mMainLayout.findViewById(R.id.button_xml_example);
         mXmlButton.setOnClickListener((MainActivity)getActivity());
 
+        mVersionLabel = (TextView) mMainLayout.findViewById(R.id.sdk_version_label);
+        mVersionLabel.setText(this.getSDKVersion());
+
         mCookieWebView = (WebView) mMainLayout.findViewById(R.id.webview_cookies);
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private void loadCookieWebView() {
         mCookieWebView.setWebViewClient(new WebViewClient() {
             @Override
@@ -72,5 +83,12 @@ public class MainFragment extends Fragment {
 
         mCookieWebView.loadUrl("http://qa.testing.spotxchange.com/cookie/");
         mCookieWebView.setVisibility(View.VISIBLE);
+    }
+
+    private String getSDKVersion() {
+        final Context ctx = getActivity();
+        final AdvertisingInformation info = new AdvertisingInformation(ctx);
+        final String version = ctx.getString(R.string.sdk_version_string, info.getSpotXSdkVersion());
+        return version;
     }
 }
