@@ -1,5 +1,6 @@
 package com.spotxchange.demo;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -25,6 +26,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     /*------------- Activity-------------*/
 
     @Override
+    @TargetApi(19)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

@@ -19,7 +19,7 @@ import com.spotxchange.integration.mraid.utils.VpaidEventListener;
 
 public class InterstitialViewFragment extends Fragment implements View.OnClickListener {
 
-    private static final String LOGTAG = "InterstitialViewFragment";
+    private static final String LOGTAG = "InterstitlViewFragment";
 
     RelativeLayout mLayoutMain;
     SpotXView mSpotXView;
