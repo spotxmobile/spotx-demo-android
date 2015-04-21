@@ -58,7 +58,7 @@
         android:gravity="center_horizontal"
         android:layout_alignParentBottom="true" />
 
-    <WebView  xmlns:android="http://schemas.android.com/apk/res/android"
+    <WebView
         android:id="@+id/webview_cookies"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
