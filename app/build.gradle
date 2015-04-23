@@ -42,5 +42,6 @@ android {
 dependencies {
     compile 'com.google.android.gms:play-services:+'
     compile 'net.hockeyapp.android:HockeySDK:3.0.2'
-    compile project(':..:spotx-sdk-android')
+    releaseCompile project(path: ':..:spotx-sdk-android', configuration: 'release')
+    debugCompile project(path: ':..:spotx-sdk-android', configuration: 'debug')
 }

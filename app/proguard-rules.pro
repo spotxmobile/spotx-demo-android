@@ -16,7 +16,13 @@
 #   public *;
 #}
 -dontobfuscate
+-dontshrink
 
 -keepclassmembers class * implements android.os.Parcelable {
     static ** CREATOR;
     }
+
+#Remove asserts
+-assumenosideeffects class junit.framework.Assert {
+    public static *** assert*(...);
+}
