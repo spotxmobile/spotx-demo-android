@@ -73,6 +73,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
             loadProgrammaticFragment();
         } else if (v.getId() == R.id.button_xml_example) {
             loadXmlFragment();
+        } else if (v.getId() == R.id.button_adview_example)
+        {
+            loadAdViewFragment();
         }
     }
 
@@ -125,6 +128,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void loadXmlFragment() {
         XmlFragment fragment = new XmlFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.activity_main_container, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    private void loadAdViewFragment() {
+        AdViewFragment fragment = new AdViewFragment();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.activity_main_container, fragment);
