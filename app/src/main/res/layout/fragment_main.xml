@@ -42,10 +42,19 @@
         android:textColor="@android:color/white"/>
 
     <Button
-        android:id="@+id/button_cookies"
+        android:id="@+id/button_adview_example"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@id/button_interstitial_view_example"
+
+        android:text="SpotxAdView Example"
+        android:textColor="@android:color/white"/>
+
+    <Button
+        android:id="@+id/button_cookies"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/button_adview_example"
 
         android:text="Debug Information"
         android:textColor="@android:color/white"/>
