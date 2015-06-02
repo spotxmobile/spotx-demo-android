@@ -9,10 +9,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
-import com.spotxchange.integration.mraid.SpotXProperties;
-import com.spotxchange.integration.mraid.SpotXView;
-import com.spotxchange.integration.mraid.enumerations.VpaidEvent;
-import com.spotxchange.integration.mraid.utils.VpaidEventListener;
 import com.spotxchange.sdk.android.SpotxAdView;
 
 
