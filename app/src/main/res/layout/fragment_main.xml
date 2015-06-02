@@ -6,49 +6,13 @@
     tools:context=".main">
 
     <Button
-        android:id="@+id/button_programmatic_example"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-
-        android:text="Programmatic Example (Inline)"
-        android:textColor="@android:color/white"/>
-
-    <Button
-        android:id="@+id/button_xml_example"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/button_programmatic_example"
-
-        android:text="XML Example (Inline)"
-        android:textColor="@android:color/white"/>
-
-    <Button
-        android:id="@+id/button_interstitial_activity_example"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/button_xml_example"
-
-        android:text="Interstitial Activity Example"
-        android:textColor="@android:color/white"/>
-
-    <Button
-        android:id="@+id/button_interstitial_view_example"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/button_interstitial_activity_example"
-
-        android:text="Interstitial View Example"
-        android:textColor="@android:color/white"/>
-
-    <Button
         android:id="@+id/button_adview_example"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@id/button_interstitial_view_example"
 
         android:text="SpotxAdView Example"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        />
 
     <Button
         android:id="@+id/button_cookies"

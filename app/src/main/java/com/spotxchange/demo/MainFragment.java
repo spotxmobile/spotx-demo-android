@@ -14,7 +14,8 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.spotxchange.integration.mraid.information.AdvertisingInformation;
+import com.spotxchange.sdk.android.SpotxAdSettings;
+
 
 public class MainFragment extends Fragment {
     private final String TAG = MainFragment.class.getSimpleName();
@@ -43,26 +44,6 @@ public class MainFragment extends Fragment {
     }
 
     private void getReferenceToResources() {
-        mInterstitialActivityButton = (Button) mMainLayout.findViewById(R.id.button_interstitial_activity_example);
-        mInterstitialActivityButton.setOnClickListener((MainActivity) getActivity());
-
-        mInterstitialViewButton = (Button) mMainLayout.findViewById(R.id.button_interstitial_view_example);
-        mInterstitialViewButton.setOnClickListener((MainActivity)getActivity());
-
-        mCookiesButton = (Button) mMainLayout.findViewById(R.id.button_cookies);
-        mCookiesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadCookieWebView();
-            }
-        });
-
-        mProgrammticButton = (Button) mMainLayout.findViewById(R.id.button_programmatic_example);
-        mProgrammticButton.setOnClickListener((MainActivity)getActivity());
-
-        mXmlButton = (Button) mMainLayout.findViewById(R.id.button_xml_example);
-        mXmlButton.setOnClickListener((MainActivity)getActivity());
-
         mVersionLabel = (TextView) mMainLayout.findViewById(R.id.sdk_version_label);
         mVersionLabel.setText(this.getSDKVersion());
 
@@ -92,8 +73,7 @@ public class MainFragment extends Fragment {
 
     private String getSDKVersion() {
         final Context ctx = getActivity();
-        final AdvertisingInformation info = new AdvertisingInformation(ctx);
-        final String version = ctx.getString(R.string.sdk_version_string, info.getSpotXSdkVersion());
+        final String version = ctx.getString(R.string.sdk_version_string, SpotxAdSettings.getSdkVersion());
         return version;
     }
 }
