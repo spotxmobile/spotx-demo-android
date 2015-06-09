@@ -2,11 +2,13 @@ apply plugin: 'android'
 
 repositories {
     mavenCentral()
+    maven { url "http://cloudant.github.io/cloudant-sync-eap/repository/" }
 }
 dependencies {
     compile 'com.google.android.gms:play-services:+'
     compile 'net.hockeyapp.android:HockeySDK:3.0.2'
-    compile 'com.spotxchange:spotx-sdk-android:1.0.1@aar'
+    //releaseCompile 'com.spotxchange:spotx-sdk-android:1.0.1@aar'
+    compile project(path: ':..:spotx-sdk-android', configuration: 'debug')
 }
 
 def VERSION_CODE = (new Date()).format('yyyyMMddHH').toInteger()
