@@ -6,11 +6,9 @@
     tools:context="com.spotxchange.demo.InterstitialViewFragment">
 
     <!-- TODO: Make visible after ad closed -->
-    <!--
-
     <EditText
         android:visibility="invisible"
-        android:id="@+id/edittext_launch_interstitial_view_channel_id"
+        android:id="@+id/edittext_launch_adview_channel_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -29,11 +27,8 @@
         android:text="Launch SpotXAdView"
         android:textColor="@android:color/holo_green_light"/>
 
-    -->
-
-    <!-- TODO: Start invisible, then show something on load -->
     <com.spotxchange.sdk.android.SpotxAdView
-        android:visibility="visible"
+        android:visibility="invisible"
         android:id="@+id/adview_example"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
