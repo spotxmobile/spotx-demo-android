@@ -14,11 +14,6 @@ import net.hockeyapp.android.UpdateManager;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    private final String HOCKEYAPP_API_KEY = "d1fb52c9a6a4b7c0d860b73434113535";
-
-    private WebView mCookieWebView;
-
-    public static final String DEFAULT_CHANNEL_ID_HINT = "90782";
     // Integration = 82949
     // Stage2 = 88980
     // Production = 90782
@@ -30,7 +25,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         checkForCrashes();
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -50,14 +44,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void checkForCrashes() {
         if (!BuildConfig.DEBUG) {
-            CrashManager.register(this, HOCKEYAPP_API_KEY);
+            CrashManager.register(this, getString(R.string.hockeyapp_api_key));
         }
     }
 
     private void checkForUpdates() {
         // TODO: Remove this for Google Play Store builds!
         if (!BuildConfig.DEBUG) {
-            UpdateManager.register(this, HOCKEYAPP_API_KEY);
+            UpdateManager.register(this, getString(R.string.hockeyapp_api_key));
         }
     }
 
@@ -65,8 +59,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.button_adview_example)
-        {
+        if (v.getId() == R.id.button_adview_example){
             loadAdViewFragment();
         }
     }
@@ -76,7 +69,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         WebView cookies = (WebView)findViewById(R.id.webview_cookies);
         if (cookies != null && cookies.getVisibility() == View.VISIBLE) {
             findViewById(R.id.webview_cookies).setVisibility(View.INVISIBLE);
-        } else {
+        }
+        else {
             super.onBackPressed();
         }
     }

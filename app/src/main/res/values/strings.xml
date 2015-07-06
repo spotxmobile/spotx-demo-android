@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">SpotX SDK Demo</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="sdk_version_string">SDK Version %1$s</string>
-    <string name="load_text">Load SpotXAdView</string>
-    <string name="launch_text">Launch SpotXAdView</string>
     <string name="app_domain">com.spotxchange.demo</string>
-    <string name="interstitial">interstitial</string>
-    <string name="default_channel">68801</string>
+    <string name="sdk_version_string">SDK Version %1$s</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="load_text">Load Ad</string>
+    <string name="launch_text">Launch Ad</string>
+    <string name="ad_view_title">SpotX Ad</string>
+
+    <string name="hockeyapp_api_key">d1fb52c9a6a4b7c0d860b73434113535</string>
+    <string name="qa_cookie_url">http://qa.testing.spotxchange.com/cookie/</string>
 </resources>
