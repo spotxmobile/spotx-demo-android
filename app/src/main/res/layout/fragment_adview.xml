@@ -11,33 +11,49 @@
         <EditText
             android:visibility="visible"
             android:id="@+id/edittext_launch_adview_channel_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
 
             android:textColor="@android:color/holo_blue_light"
             android:textSize="25sp"
             android:inputType="number"
-            android:textColorHint="@color/common_signin_btn_light_text_disabled"/>
+            android:textColorHint="@color/common_signin_btn_light_text_disabled"
+            android:layout_below="@+id/text_title_ad_frag"
+            android:layout_alignStart="@+id/button_load_adview"/>
 
         <Button
             android:visibility="visible"
             android:id="@+id/button_load_adview"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_below="@id/edittext_launch_adview_channel_id"
 
             android:text="@string/load_text"
-            android:textColor="@android:color/holo_green_light"/>
+            android:textColor="@android:color/holo_green_light"
+            android:layout_below="@+id/edittext_launch_adview_channel_id"
+            android:layout_centerHorizontal="true"/>
 
         <Button
             android:visibility="invisible"
             android:id="@+id/button_launch_adview"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_below="@id/button_load_adview"
 
             android:text="@string/launch_text"
-            android:textColor="@android:color/holo_green_light"/>
+            android:textColor="@android:color/holo_green_light"
+            android:layout_below="@+id/button_load_adview"
+            android:layout_alignStart="@+id/button_load_adview"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/ad_view_title"
+            android:id="@+id/text_title_ad_frag"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="21dp"
+            android:gravity="center_vertical|center_horizontal"/>
     </RelativeLayout>
 
     <com.spotxchange.sdk.android.SpotxAdView
@@ -45,10 +61,9 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:visibility="invisible"
         android:id="@+id/adview_example"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
 
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
 
         spotx:channel_id="68801"

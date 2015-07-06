@@ -22,6 +22,7 @@ public class AdViewFragment extends Fragment {
 
     private RelativeLayout _layout;
     private SpotxAdView _adView;
+    private SpotxAdView _adView2;
 
     public AdViewFragment() {
         // Required empty public constructor
@@ -40,12 +41,13 @@ public class AdViewFragment extends Fragment {
 
         // Create the SpotX Ad
         _adView = (SpotxAdView) _layout.findViewById(R.id.adview_example);
+        _adView2 = (SpotxAdView) _layout.findViewById(R.id.adview_example);
 
         final SpotxAdListener adListener = new SpotxAdListener() {
             @Override
             public void adLoaded() {
                 Log.d(LOGTAG, "Ad was loaded.");
-                //_adView.setVisibility(View.VISIBLE);
+                _adView.setVisibility(View.VISIBLE);
                 _layout.findViewById(R.id.button_launch_adview).setVisibility(View.VISIBLE);
             }
 
@@ -109,6 +111,13 @@ public class AdViewFragment extends Fragment {
                     _adView = new SpotxAdView(getActivity(), settings);
                     _adView.setVisibility(View.INVISIBLE);
                     _adView.setAdListener(adListener);
+
+                    _adView2 = new SpotxAdView(getActivity(), settings);
+                    _adView2.setVisibility(View.INVISIBLE);
+                    _adView2.setAdListener(adListener);
+
+                    //_adView.setVisibility(View.VISIBLE);
+
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
