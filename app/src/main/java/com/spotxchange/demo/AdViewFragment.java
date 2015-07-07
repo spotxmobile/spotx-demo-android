@@ -38,14 +38,10 @@ public class AdViewFragment extends Fragment {
                 getActivity().getResources().getString(R.string.default_channel)
                 );
 
-        // Create the SpotX Ad
-        _adView = (SpotxAdView) _layout.findViewById(R.id.adview_example);
-
         final SpotxAdListener adListener = new SpotxAdListener() {
             @Override
             public void adLoaded() {
                 Log.d(LOGTAG, "Ad was loaded.");
-                //_adView.setVisibility(View.VISIBLE);
                 _layout.findViewById(R.id.button_launch_adview).setVisibility(View.VISIBLE);
             }
 
@@ -87,7 +83,6 @@ public class AdViewFragment extends Fragment {
                         public void onClick(DialogInterface dialog, int which) {
                         }
                     })
-                    //.setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
 
                 _layout.findViewById(R.id.button_launch_adview).setVisibility(View.INVISIBLE);
@@ -96,7 +91,6 @@ public class AdViewFragment extends Fragment {
             @Override
             public void adExpired() {
                 Log.d(LOGTAG, "Ad has expired");
-                //TODO: AdViewFragment.createNewView();
 
                 if (_adView != null) {
                     _adView.unsetAdListener();
@@ -111,7 +105,6 @@ public class AdViewFragment extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
                             }
                         })
-                                //.setIcon(android.R.drawable.ic_dialog_alert)
                         .show();
 
                 _layout.findViewById(R.id.button_launch_adview).setVisibility(View.INVISIBLE);
@@ -148,9 +141,6 @@ public class AdViewFragment extends Fragment {
                 _adView.setVisibility(View.VISIBLE);
             }
         });
-
-        //_adView.setAdListener(adListener);
-        //_adView.init();
 
         return _layout;
     }
