@@ -40,19 +40,4 @@
             android:text="@string/launch_text"
             android:textColor="@android:color/holo_green_light"/>
     </RelativeLayout>
-
-    <com.spotxchange.sdk.android.SpotxAdView
-        android:id="@+id/adview_example"
-        android:visibility="invisible"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-
-        spotx:channel_id="68801"
-        spotx:app_domain="@string/app_domain"
-        spotx:placement="@string/interstitial"
-        />
-
 </RelativeLayout>

@@ -60,8 +60,12 @@ public class AdViewFragment extends Fragment {
             @Override
             public void adCompleted() {
                 Log.d(LOGTAG, "Ad has completed.");
-                _adView.unsetAdListener();
-                _layout.removeView(_adView);
+
+                if (_adView != null) {
+                    _adView.unsetAdListener();
+                    _layout.removeView(_adView);
+                    _adView = null;
+                }
 
                 _layout.findViewById(R.id.layout_interstitial_controls).setVisibility(View.VISIBLE);
             }
@@ -69,8 +73,12 @@ public class AdViewFragment extends Fragment {
             @Override
             public void adError() {
                 Log.d(LOGTAG, "Ad failed with error");
-                _adView.unsetAdListener();
-                _layout.removeView(_adView);
+
+                if (_adView != null) {
+                    _adView.unsetAdListener();
+                    _layout.removeView(_adView);
+                    _adView = null;
+                }
 
                 new AlertDialog.Builder(getActivity())
                     .setTitle("Ad error.")
@@ -89,7 +97,24 @@ public class AdViewFragment extends Fragment {
             public void adExpired() {
                 Log.d(LOGTAG, "Ad has expired");
                 //TODO: AdViewFragment.createNewView();
-                adError();
+
+                if (_adView != null) {
+                    _adView.unsetAdListener();
+                    _layout.removeView(_adView);
+                    _adView = null;
+                }
+
+                new AlertDialog.Builder(getActivity())
+                        .setTitle("Ad expired.")
+                        .setMessage("Ad expired and was purged instead of shown.")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                                //.setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+
+                _layout.findViewById(R.id.button_launch_adview).setVisibility(View.INVISIBLE);
             }
         };
 
@@ -101,26 +126,14 @@ public class AdViewFragment extends Fragment {
                     Log.d(LOGTAG, "reload button clicked");
                     _layout.findViewById(R.id.button_launch_adview).setVisibility(View.INVISIBLE);
 
-                    _adView.unsetAdListener();
-                    _layout.removeView(_adView);
+                    if (_adView != null) {
+                        _adView.unsetAdListener();
+                        _layout.removeView(_adView);
+                        _adView = null;
+                    }
 
-                    _adView = null;
-
-                    String appDomain = getActivity().getResources().getString(R.string.app_domain);
-                    SpotxAdSettings settings = new SpotxAdSettings(getChannelIdFromEditText(), appDomain, "interstitial");
-
-                    _adView = (SpotxAdView) LayoutInflater.from(getActivity()).inflate(
-                            R.layout.adview,
-                            _layout,
-                            false);
-
-                    Log.d(LOGTAG, "New view, height: " + _adView.getHeight());
-                    //_adView = new SpotxAdView(getActivity(), settings);
-                    _adView.setVisibility(View.INVISIBLE);
-                    _adView.setAdListener(adListener);
+                    _adView = createNewAdView(adListener);
                     _layout.addView(_adView);
-                    _adView.init();
-
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -136,8 +149,8 @@ public class AdViewFragment extends Fragment {
             }
         });
 
-        _adView.setAdListener(adListener);
-        _adView.init();
+        //_adView.setAdListener(adListener);
+        //_adView.init();
 
         return _layout;
     }
@@ -158,5 +171,23 @@ public class AdViewFragment extends Fragment {
             ignore.printStackTrace();
         }
         return result;
+    }
+
+    private SpotxAdView createNewAdView(SpotxAdListener adListener) {
+
+        String appDomain = getActivity().getResources().getString(R.string.app_domain);
+        SpotxAdSettings settings = new SpotxAdSettings(getChannelIdFromEditText(), appDomain, "interstitial");
+
+        SpotxAdView adView = (SpotxAdView) LayoutInflater.from(getActivity()).inflate(
+                R.layout.adview,
+                _layout,
+                false);
+
+        adView.setAdSettings(settings);
+        adView.setVisibility(View.INVISIBLE);
+        adView.setAdListener(adListener);
+        adView.init();
+
+        return adView;
     }
 }
