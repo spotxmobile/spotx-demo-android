@@ -12,6 +12,8 @@ dependencies {
 
     //releaseCompile 'com.spotxchange:spotx-sdk-android:1.0.1@aar'
     compile project(path: ':..:spotx-sdk-android', configuration: 'debug')
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.google.android.gms:play-services:6.5.87'
 }
 
 android {
