@@ -59,8 +59,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.button_adview_example){
-            loadAdViewFragment();
+        switch(v.getId()) {
+            case R.id.button_adview_example:
+                loadAdViewFragment();
+                break;
+            case R.id.button_test_suite:
+                loadTestSuiteFragment();
+                break;
         }
     }
 
@@ -87,6 +92,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void loadAdViewFragment() {
         AdViewFragment fragment = new AdViewFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.activity_main_container, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    private void loadTestSuiteFragment() {
+        TestSuiteViewFragment fragment = new TestSuiteViewFragment();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.activity_main_container, fragment);

@@ -37,6 +37,7 @@ public class MainFragment extends Fragment {
         _versionLabel.setText(this.getSDKVersion());
         _cookieWebView = (WebView) _mainLayout.findViewById(R.id.webview_cookies);
         _mainLayout.findViewById(R.id.button_adview_example).setOnClickListener((MainActivity)getActivity());
+        _mainLayout.findViewById(R.id.button_test_suite).setOnClickListener((MainActivity)getActivity());
     }
 
     @SuppressLint("SetJavaScriptEnabled")

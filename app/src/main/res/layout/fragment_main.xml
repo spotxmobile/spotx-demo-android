@@ -28,9 +28,8 @@
 
         android:text="Cookie Info"
         android:textColor="@android:color/white"
-        android:layout_below="@+id/button_adview_example"
-        android:layout_alignStart="@+id/button_adview_example"
-        android:layout_marginTop="5dp"/>
+        android:layout_below="@+id/button_test_suite"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/sdk_version_label"
@@ -45,7 +44,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:visibility="invisible"
-        android:layout_alignParentTop="true"/>
+        />
 
     <ImageView
         android:layout_width="60dp"
@@ -66,5 +65,14 @@
         android:layout_alignBottom="@+id/imageView"
         android:gravity="center_vertical|center_horizontal"
         android:layout_alignParentStart="true"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Test Suite"
+        android:id="@+id/button_test_suite"
+        android:layout_below="@+id/button_adview_example"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="false"/>
 
 </RelativeLayout>

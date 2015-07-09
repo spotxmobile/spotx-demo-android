@@ -35,7 +35,7 @@ public class AdViewFragment extends Fragment implements View.OnClickListener {
         _layout.findViewById(R.id.button_launch_adview).setOnClickListener(this);
 
         _editTextLaunchChannelId = ((EditText) _layout.findViewById(R.id.edittext_launch_adview_channel_id));
-        _editTextLaunchChannelId.setHint(R.string.default_channel);
+        _editTextLaunchChannelId.setHint(getString(R.string.prod_channel));
 
         _adView = (SpotxAdView) _layout.findViewById(R.id.adview_example);
         _adView.setAdListener(_adListener);
