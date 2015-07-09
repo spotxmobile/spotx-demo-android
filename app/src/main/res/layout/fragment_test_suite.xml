@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Test Suite"
+        android:id="@+id/text_title_test_suite"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:layout_marginBottom="21dp"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Open URL"
+        android:id="@+id/button_open_url"
+        android:layout_below="@+id/text_title_test_suite"
+        android:layout_alignStart="@+id/button_sms"
+        android:textColor="@color/spotxblue"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="SMS"
+        android:id="@+id/button_sms"
+        android:layout_below="@+id/button_open_url"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/spotxblue"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Calendar Event"
+        android:id="@+id/button_calendar_event"
+        android:layout_below="@+id/button_sms"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/spotxblue"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Store Picture"
+        android:id="@+id/button_store_picture"
+        android:layout_below="@+id/button_calendar_event"
+        android:layout_alignStart="@+id/button_calendar_event"
+        android:textColor="@color/spotxblue"/>
+
+</RelativeLayout>
