@@ -15,7 +15,7 @@
     <string name="prod_channel">90782</string>
 
     <string name="test_mraid_open_url">http://www.google.com</string>
-    <string name="test_mraid_sms">sms://+14035550185,+18675309?body=I%27m%20interested%20in%20your%20cheese.</string>
+    <string name="test_mraid_sms">sms://+14035550185,+13038675309?body=I%27m%20interested%20in%20your%20cheese.</string>
     <string name="test_mraid_cal_description">High Times Meetup</string>
     <string name="test_mraid_cal_location">451 E 58th Ave, Denver, CO 80216</string>
     <string name="test_mraid_cal_start_time">2020-04-20T04:20-07:00</string>
