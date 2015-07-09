@@ -11,4 +11,14 @@
 
     <string name="hockeyapp_api_key">d1fb52c9a6a4b7c0d860b73434113535</string>
     <string name="qa_cookie_url">http://qa.testing.spotxchange.com/cookie/</string>
+    <string name="interstitial">interstitial</string>
+    <string name="prod_channel">90782</string>
+
+    <string name="test_mraid_open_url">http://www.google.com</string>
+    <string name="test_mraid_sms">sms://+14035550185,+18675309?body=I%27m%20interested%20in%20your%cheese.</string>
+    <string name="test_mraid_cal_description">High Times Meetup</string>
+    <string name="test_mraid_cal_location">451 E 58th Ave, Denver, CO 80216</string>
+    <string name="test_mraid_cal_start_time">2020-04-20T04:20-07:00</string>
+    <string name="test_mraid_cal_end_time">2020-04-20T16:20-07:00</string>
+    <string name="test_mraid_picture_url">http://i.imgur.com/KWl6pqT.jpg</string>
 </resources>
