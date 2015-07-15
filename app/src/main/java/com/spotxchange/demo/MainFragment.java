@@ -52,7 +52,13 @@ public class MainFragment extends Fragment {
         ((Button) mMainLayout.findViewById(R.id.button_adview_example))
                 .setOnClickListener((MainActivity)getActivity());
 
-
+        ((Button) mMainLayout.findViewById(R.id.button_cookies))
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        loadCookieWebView();
+                    }
+                });
     }
 
     @SuppressLint("SetJavaScriptEnabled")
