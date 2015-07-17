@@ -36,8 +36,9 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_below="@id/button_load_adview"
+            android:enabled="false"
 
-            android:text="@string/launch_text"
+            android:text="@string/loading_text"
             android:textColor="@android:color/holo_green_light"/>
     </RelativeLayout>
 </RelativeLayout>

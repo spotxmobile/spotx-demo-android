@@ -15,27 +15,12 @@
         />
 
     <Button
-        android:id="@+id/button_cookies"
+        android:id="@+id/button_debug"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@id/button_adview_example"
 
-        android:text="Debug Information"
+        android:text="@string/debug_info"
         android:textColor="@android:color/white"/>
-
-    <TextView
-        android:id="@+id/sdk_version_label"
-        android:text="@string/sdk_version_string"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_alignParentBottom="true" />
-
-    <WebView
-        android:id="@+id/webview_cookies"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:visibility="invisible"
-        />
 
 </RelativeLayout>

@@ -1,15 +1,15 @@
 package com.spotxchange.demo;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.spotxchange.sdk.android.SpotxAdListener;
 import com.spotxchange.sdk.android.SpotxAdSettings;
@@ -18,7 +18,7 @@ import com.spotxchange.sdk.android.SpotxAdView;
 
 public class AdViewFragment extends Fragment {
 
-    private final static String LOGTAG = AdViewFragment.class.getSimpleName();
+    public final static String TAG = AdViewFragment.class.getSimpleName();
 
     private RelativeLayout _layout;
     private SpotxAdView _adView;
@@ -41,21 +41,20 @@ public class AdViewFragment extends Fragment {
         final SpotxAdListener adListener = new SpotxAdListener() {
             @Override
             public void adLoaded() {
-                Log.d(LOGTAG, "Ad was loaded.");
+                Log.d(TAG, "Ad was loaded.");
                 _layout.findViewById(R.id.button_launch_adview).setVisibility(View.VISIBLE);
+                setLaunchButtonLoaded();
             }
 
             @Override
             public void adStarted() {
-                Log.d(LOGTAG, "Ad was started.");
+                Log.d(TAG, "Ad was started.");
                 _layout.findViewById(R.id.button_launch_adview).setVisibility(View.INVISIBLE);
-
-                _layout.findViewById(R.id.layout_interstitial_controls).setVisibility(View.INVISIBLE);
             }
 
             @Override
             public void adCompleted() {
-                Log.d(LOGTAG, "Ad has completed.");
+                Log.d(TAG, "Ad has completed.");
 
                 if (_adView != null) {
                     _adView.unsetAdListener();
@@ -63,12 +62,11 @@ public class AdViewFragment extends Fragment {
                     _adView = null;
                 }
 
-                _layout.findViewById(R.id.layout_interstitial_controls).setVisibility(View.VISIBLE);
             }
 
             @Override
             public void adError() {
-                Log.d(LOGTAG, "Ad failed with error");
+                Log.d(TAG, "Ad failed with error");
 
                 if (_adView != null) {
                     _adView.unsetAdListener();
@@ -76,21 +74,14 @@ public class AdViewFragment extends Fragment {
                     _adView = null;
                 }
 
-                new AlertDialog.Builder(getActivity())
-                    .setTitle("Ad error.")
-                    .setMessage("Ad failed with error.")
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    })
-                    .show();
+                Toast.makeText(getActivity(), "Ad failed with error.", Toast.LENGTH_SHORT).show();
 
-                _layout.findViewById(R.id.button_launch_adview).setVisibility(View.INVISIBLE);
+                setLaunchButtonInvisible();
             }
 
             @Override
             public void adExpired() {
-                Log.d(LOGTAG, "Ad has expired");
+                Log.d(TAG, "Ad has expired");
 
                 if (_adView != null) {
                     _adView.unsetAdListener();
@@ -98,16 +89,9 @@ public class AdViewFragment extends Fragment {
                     _adView = null;
                 }
 
-                new AlertDialog.Builder(getActivity())
-                        .setTitle("Ad expired.")
-                        .setMessage("Ad expired and was purged instead of shown.")
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        })
-                        .show();
+                Toast.makeText(getActivity(), "Ad expired. Ad has been purged.", Toast.LENGTH_SHORT).show();
 
-                _layout.findViewById(R.id.button_launch_adview).setVisibility(View.INVISIBLE);
+                setLaunchButtonInvisible();
             }
         };
 
@@ -116,8 +100,8 @@ public class AdViewFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    Log.d(LOGTAG, "reload button clicked");
-                    _layout.findViewById(R.id.button_launch_adview).setVisibility(View.INVISIBLE);
+                    Log.d(TAG, "reload button clicked");
+                    setLaunchButtonLoading();
 
                     if (_adView != null) {
                         _adView.unsetAdListener();
@@ -137,8 +121,10 @@ public class AdViewFragment extends Fragment {
         _layout.findViewById(R.id.button_launch_adview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(LOGTAG, "launch button clicked");
+                Log.d(TAG, "launch button clicked");
                 _adView.setVisibility(View.VISIBLE);
+                setLaunchButtonInvisible();
+
             }
         });
 
@@ -179,5 +165,23 @@ public class AdViewFragment extends Fragment {
         adView.init();
 
         return adView;
+    }
+
+    private void setLaunchButtonLoading()
+    {
+        _layout.findViewById(R.id.button_launch_adview).setEnabled(false);
+        ((Button)_layout.findViewById(R.id.button_launch_adview)).setText(R.string.loading_text);
+        (_layout.findViewById(R.id.button_launch_adview)).setVisibility(View.VISIBLE);
+    }
+
+    private void setLaunchButtonLoaded()
+    {
+        _layout.findViewById(R.id.button_launch_adview).setEnabled(true);
+        ((Button)_layout.findViewById(R.id.button_launch_adview)).setText(R.string.launch_text);
+    }
+
+    private void setLaunchButtonInvisible()
+    {
+        (_layout.findViewById(R.id.button_launch_adview)).setVisibility(View.INVISIBLE);
     }
 }

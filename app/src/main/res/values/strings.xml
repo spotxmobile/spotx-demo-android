@@ -8,7 +8,12 @@
     <string name="sdk_version_string">SDK Version %1$s</string>
     <string name="load_text">Load SpotXAdView</string>
     <string name="launch_text">Launch SpotXAdView</string>
+    <string name="loading_text">Loading SpotXAdView...</string>
     <string name="app_domain">com.spotxchange.demo</string>
     <string name="interstitial">interstitial</string>
     <string name="default_channel">68801</string>
+    <string name="cookie_report">Cookie Report</string>
+    <string name="sdk_config_report">SDK Configuration</string>
+    <string name="debug_info">Debug Information</string>
+    <string name="debug_log">Debug Log</string>
 </resources>
