@@ -6,6 +6,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Debug;
 import android.view.View;
 import android.webkit.WebView;
 
@@ -13,15 +14,8 @@ import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.UpdateManager;
 
 public class MainActivity extends Activity implements View.OnClickListener {
-
+    private static final String TAG = MainActivity.class.getSimpleName();
     private final String HOCKEYAPP_API_KEY = "d1fb52c9a6a4b7c0d860b73434113535";
-
-    private WebView mCookieWebView;
-
-    public static final String DEFAULT_CHANNEL_ID_HINT = "90782";
-    // Integration = 82949
-    // Stage2 = 88980
-    // Production = 90782
 
     /*------------- Activity-------------*/
 
@@ -69,6 +63,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         {
             loadAdViewFragment();
         }
+        else if (v.getId() == R.id.button_debug)
+        {
+            loadDebugFragment();
+        }
     }
 
     @Override
@@ -96,7 +94,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.activity_main_container, fragment);
-        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.addToBackStack(AdViewFragment.TAG);
+        fragmentTransaction.commit();
+    }
+
+    private void loadDebugFragment() {
+        DebugViewFragment fragment = new DebugViewFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.activity_main_container, fragment);
+        fragmentTransaction.addToBackStack(this.TAG);
         fragmentTransaction.commit();
     }
 }
