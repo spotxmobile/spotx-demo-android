@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="log_error">#DC143C</color>
+    <color name="log_warn">#CEA867</color>
+    <color name="log_debug">#008080</color>
+    <color name="log_info">#404040</color>
+</resources>
