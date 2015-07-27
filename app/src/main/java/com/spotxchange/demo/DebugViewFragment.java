@@ -18,24 +18,21 @@ import com.spotxchange.demo.components.debugLog.DebugLogFragment;
 import com.spotxchange.sdk.android.SpotxAdSettings;
 
 
-public class DebugViewFragment extends Fragment {
+public class DebugViewFragment extends Fragment implements View.OnClickListener{
     public static final String TAG = DebugViewFragment.class.getSimpleName();
+    public static final String QA_COOKIE_URL = "http://qa.testing.spotxchange.com/cookie/";
 
-    TextView _versionLabel;
-    WebView _cookieWebView;
-    View _debugLogView;
-    View _sdkConfigView;
-
-    RelativeLayout _layout;
+    private RelativeLayout _layout;
+    private TextView _versionLabel;
+    private WebView _cookieWebView;
+    private View _sdkConfigView;
 
     public DebugViewFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         _layout = (RelativeLayout)inflater.inflate(R.layout.fragment_debug, container, false);
         setupViewButtons();
         return _layout;
@@ -48,29 +45,9 @@ public class DebugViewFragment extends Fragment {
         _cookieWebView = (WebView) _layout.findViewById(R.id.webview_cookies);
         _sdkConfigView = _layout.findViewById(R.id.view_config);
 
-        (_layout.findViewById(R.id.button_cookies))
-                .setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        loadCookieWebView();
-                    }
-                });
-
-        (_layout.findViewById(R.id.button_log))
-                .setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        loadDebugLogView();
-                    }
-                });
-
-        (_layout.findViewById(R.id.button_config))
-                .setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        loadConfigView();
-                    }
-                });
+        _layout.findViewById(R.id.button_cookies).setOnClickListener(this);
+        _layout.findViewById(R.id.button_log).setOnClickListener(this);
+        _layout.findViewById(R.id.button_config).setOnClickListener(this);
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -84,8 +61,7 @@ public class DebugViewFragment extends Fragment {
         });
         WebSettings webSettings = _cookieWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-
-        _cookieWebView.loadUrl("http://qa.testing.spotxchange.com/cookie/");
+        _cookieWebView.loadUrl(QA_COOKIE_URL);
         _cookieWebView.setVisibility(View.VISIBLE);
     }
 
@@ -106,4 +82,18 @@ public class DebugViewFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.button_cookies:
+                loadCookieWebView();
+                break;
+            case R.id.button_log:
+                loadDebugLogView();
+                break;
+            case R.id.button_config:
+                loadConfigView();
+                break;
+        }
+    }
 }

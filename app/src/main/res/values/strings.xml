@@ -7,15 +7,15 @@
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sdk_version_string">SDK Version %1$s</string>
-    <string name="load_text">Load SpotXAdView</string>
-    <string name="launch_text">Launch SpotXAdView</string>
-    <string name="loading_text">Loading SpotXAdView...</string>
+    <string name="load_text">Load New Ad</string>
+    <string name="launch_text">Launch Ad</string>
+    <string name="loading_text">Loading Ad...</string>
     <string name="app_domain">com.spotxchange.demo</string>
     <string name="interstitial">interstitial</string>
     <string name="default_channel">68801</string>
     <string name="cookie_report">Cookie Report</string>
     <string name="sdk_config_report">SDK Configuration</string>
-    <string name="debug_info">Debug Information</string>
+    <string name="debug_info">Debug Info</string>
     <string name="debug_log">Debug Log</string>
     <string name="config_clear">Clear Config</string>
 
