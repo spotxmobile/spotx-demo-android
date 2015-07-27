@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="HOCKEY_API_KEY">d1fb52c9a6a4b7c0d860b73434113535</string>
 
     <string name="app_name">SpotX SDK Demo</string>
     <string name="hello_world">Hello world!</string>
@@ -16,4 +17,13 @@
     <string name="sdk_config_report">SDK Configuration</string>
     <string name="debug_info">Debug Information</string>
     <string name="debug_log">Debug Log</string>
+    <string name="config_clear">Clear Config</string>
+
+    <string name="test_mraid_open_url">http://www.google.com</string>
+    <string name="test_mraid_sms">sms://+14035550185,+13038675309?body=I%27m%20interested%20in%20your%20cheese.</string>
+    <string name="test_mraid_cal_description">High Times Meetup</string>
+    <string name="test_mraid_cal_location">451 E 58th Ave, Denver, CO 80216</string>
+    <string name="test_mraid_cal_start_time">2020-04-20T04:20-07:00</string>
+    <string name="test_mraid_cal_end_time">2020-04-20T16:20-07:00</string>
+    <string name="test_mraid_picture_url">https://s-media-cache-ak0.pinimg.com/736x/bc/ac/00/bcac00e863006346ab3554a187f49b84.jpg</string>
 </resources>

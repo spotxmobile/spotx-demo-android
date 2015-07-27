@@ -6,7 +6,6 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Debug;
 import android.view.View;
 import android.webkit.WebView;
 
@@ -15,7 +14,6 @@ import net.hockeyapp.android.UpdateManager;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private static final String TAG = MainActivity.class.getSimpleName();
-    private final String HOCKEYAPP_API_KEY = "d1fb52c9a6a4b7c0d860b73434113535";
 
     /*------------- Activity-------------*/
 
@@ -44,14 +42,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void checkForCrashes() {
         if (!BuildConfig.DEBUG) {
-            CrashManager.register(this, HOCKEYAPP_API_KEY);
+            CrashManager.register(this, getString(R.string.HOCKEY_API_KEY));
         }
     }
 
     private void checkForUpdates() {
         // TODO: Remove this for Google Play Store builds!
         if (!BuildConfig.DEBUG) {
-            UpdateManager.register(this, HOCKEYAPP_API_KEY);
+            UpdateManager.register(this, getString(R.string.HOCKEY_API_KEY));
         }
     }
 
@@ -59,13 +57,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.button_adview_example)
-        {
-            loadAdViewFragment();
-        }
-        else if (v.getId() == R.id.button_debug)
-        {
-            loadDebugFragment();
+        switch(v.getId()){
+            case R.id.button_adview_example:
+                loadAdViewFragment();
+                break;
+            case R.id.button_debug:
+                loadDebugFragment();
+                break;
+            case R.id.button_testsuite:
+                loadTestSuiteFragment();
+                break;
         }
     }
 
@@ -74,7 +75,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         WebView cookies = (WebView)findViewById(R.id.webview_cookies);
         if (cookies != null && cookies.getVisibility() == View.VISIBLE) {
             findViewById(R.id.webview_cookies).setVisibility(View.INVISIBLE);
-        } else {
+        }
+        else {
             super.onBackPressed();
         }
     }
@@ -104,6 +106,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.activity_main_container, fragment);
         fragmentTransaction.addToBackStack(this.TAG);
+        fragmentTransaction.commit();
+    }
+
+    private void loadTestSuiteFragment() {
+        TestSuiteViewFragment fragment = new TestSuiteViewFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.activity_main_container, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 }
