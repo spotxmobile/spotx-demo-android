@@ -93,6 +93,11 @@ public class AdViewFragment extends Fragment {
 
                 setLaunchButtonInvisible();
             }
+
+            @Override
+            public void adClicked() {
+                Log.d(TAG, "Ad Clicked");
+            }
         };
 
         // Register button for channel id editing
