@@ -16,15 +16,15 @@ import org.json.JSONObject;
 
 public class TestSuiteViewFragment extends Fragment implements View.OnClickListener{
 
-    RelativeLayout _layout;
-    Button _btnOpenUrl;
-    Button _btnSms;
-    Button _btnCalendarEvent;
-    Button _btnStorePicture;
+    private RelativeLayout _layout;
+    private Button _btnOpenUrl;
+    private Button _btnSms;
+    private Button _btnCalendarEvent;
+    private Button _btnStorePicture;
 
-    SpotxAdCallback _callback;
+    private SpotxAdCallback _callback;
 
-    JSONObject _calData;
+    private JSONObject _calData;
 
     @Nullable
     @Override
