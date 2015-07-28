@@ -10,7 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
 
-    spotx:channel_id="68801"
+    spotx:channel_id="85394"
     spotx:app_domain="@string/app_domain"
     spotx:placement="@string/interstitial"
     />

@@ -12,7 +12,8 @@
     <string name="loading_text">Loading Ad...</string>
     <string name="app_domain">com.spotxchange.demo</string>
     <string name="interstitial">interstitial</string>
-    <string name="default_channel">68801</string>
+    <!-- <string name="default_channel">68801</string> -->
+    <string name="default_channel">85394</string>
     <string name="cookie_report">Cookie Report</string>
     <string name="sdk_config_report">SDK Configuration</string>
     <string name="debug_info">Debug Info</string>
@@ -26,4 +27,5 @@
     <string name="test_mraid_cal_start_time">2020-04-20T04:20-07:00</string>
     <string name="test_mraid_cal_end_time">2020-04-20T16:20-07:00</string>
     <string name="test_mraid_picture_url">https://s-media-cache-ak0.pinimg.com/736x/bc/ac/00/bcac00e863006346ab3554a187f49b84.jpg</string>
+    <string name="test_channel_reminder">test channel: 85394</string>
 </resources>
