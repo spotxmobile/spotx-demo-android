@@ -61,8 +61,19 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="SpotX AdView Example"
         android:id="@+id/textView3"
+        android:textStyle="bold"
+        android:layout_above="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/test_channel_reminder"
+        android:id="@+id/textView4"
         android:layout_above="@+id/edittext_launch_adview_channel_id"
         android:layout_centerHorizontal="true"
-        android:textStyle="bold"
-        android:layout_marginBottom="15dp"/>
+        android:layout_marginBottom="3dp"
+        android:textColor="#666666"/>
 </RelativeLayout>
