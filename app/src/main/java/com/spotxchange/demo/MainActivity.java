@@ -75,6 +75,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (cookies != null && cookies.getVisibility() == View.VISIBLE) {
             findViewById(R.id.webview_cookies).setVisibility(View.INVISIBLE);
         }
+        else if(AdViewFragment.isAdViewVisible()){
+            AdViewFragment.destroyAdView();
+        }
         else {
             super.onBackPressed();
         }
