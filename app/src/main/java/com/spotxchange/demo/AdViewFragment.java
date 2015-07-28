@@ -21,7 +21,7 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
     public final static String TAG = AdViewFragment.class.getSimpleName();
 
     private RelativeLayout _layout;
-    private SpotxAdView _adView;
+    private static SpotxAdView _adView;
     private SpotxAdListener _adListener;
 
     public AdViewFragment() {
@@ -168,4 +168,16 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
                 break;
         }
     }
+
+    public static boolean isAdViewVisible(){
+        return (_adView != null && _adView.getVisibility() == View.VISIBLE);
+    }
+
+    public static void destroyAdView(){
+        if(_adView != null) {
+            _adView.setVisibility(View.GONE);
+            _adView = null;
+        }
+    }
+
 }
