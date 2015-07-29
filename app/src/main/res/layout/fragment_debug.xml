@@ -5,67 +5,76 @@
     android:layout_height="match_parent"
     tools:context="com.spotxchange.demo.DebugViewFragment">
 
-    <Button
-        android:id="@+id/button_cookies"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-
-        android:text="@string/cookie_report"
-        android:layout_above="@+id/button_config"
-        android:layout_alignStart="@+id/button_config"/>
-
-    <Button
-        android:id="@+id/button_config"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-
-        android:text="@string/sdk_config_report"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:id="@+id/button_log"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-
-        android:text="@string/debug_log"
-        android:textColor="@color/spotxgreen"
-        android:layout_below="@+id/button_config"
-        android:layout_alignStart="@+id/button_config"
-        android:textStyle="bold"/>
-
     <WebView
         android:id="@+id/webview_cookies"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:visibility="invisible"
-        android:layout_alignParentTop="true"/>
-
-
-    <View
-        android:id="@+id/view_config"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:visibility="invisible"
-        android:layout_alignTop="@+id/sdk_version_label"/>
-
-    <TextView
-        android:id="@+id/sdk_version_label"
-        android:text="@string/sdk_version_string"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textColor="@android:color/tertiary_text_light"
-        android:layout_alignParentBottom="true" />
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:layout_alignParentTop="true"
+        android:layout_margin="3dp"
+        android:background="#EFEFEF"
+        />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Debug &amp; Config Information"
-        android:id="@+id/textView2"
-        android:layout_above="@+id/button_cookies"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:textStyle="bold"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/dbg_btn_container">
+
+        <Button
+            android:id="@+id/button_cookies"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+
+            android:text="@string/cookie_report"
+            android:layout_above="@+id/button_log"
+            android:layout_alignStart="@+id/button_log"/>
+
+        <Button
+            android:id="@+id/button_config"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+
+            android:text="@string/sdk_config_report"
+            android:layout_below="@+id/button_log"
+            android:layout_alignStart="@+id/button_log"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/button_log"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+
+            android:text="@string/debug_log"
+            android:textColor="@color/spotxgreen"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"/>
+
+        <View
+            android:id="@+id/view_config"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:visibility="invisible"
+            android:layout_alignTop="@+id/sdk_version_label"/>
+
+        <TextView
+            android:id="@+id/sdk_version_label"
+            android:text="@string/sdk_version_string"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/tertiary_text_light"
+            android:layout_alignParentBottom="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Debug &amp; Config Information"
+            android:id="@+id/textView2"
+            android:layout_above="@+id/button_cookies"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:textStyle="bold"/>
+    </RelativeLayout>
 </RelativeLayout>

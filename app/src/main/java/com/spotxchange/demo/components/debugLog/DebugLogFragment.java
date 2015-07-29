@@ -26,7 +26,7 @@ import java.util.Set;
  * Copyright (C) 2015 SpotXchange
  */
 public class DebugLogFragment extends Fragment {
-    public static final String TAG = DebugLogFragment.class.getSimpleName();
+    public static final String LOGTAG = DebugLogFragment.class.getSimpleName();
 
     private ListView _listView;
     private DebugLogViewAdapter _adapter;
@@ -39,11 +39,11 @@ public class DebugLogFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         SpotxLog.openLog(getActivity());
         Set<String> log = SpotxLog.getDebugLog();
+        _adapter = new DebugLogViewAdapter(getActivity(), R.layout.row_debuglog);
         if (!log.isEmpty()) {
             _adapter.addAll(new ArrayList<>(log));
         }
         _listView = (ListView)inflater.inflate(R.layout.fragment_log, container, false);
-        _adapter = new DebugLogViewAdapter(getActivity(), R.layout.row_debuglog);
         _listView.setAdapter(_adapter);
         return _listView;
     }
