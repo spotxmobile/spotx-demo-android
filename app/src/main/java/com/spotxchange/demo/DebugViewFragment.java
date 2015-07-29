@@ -61,8 +61,10 @@ public class DebugViewFragment extends Fragment implements View.OnClickListener{
         });
         WebSettings webSettings = _cookieWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        webSettings.setUseWideViewPort(false);
         _cookieWebView.loadUrl(QA_COOKIE_URL);
         _cookieWebView.setVisibility(View.VISIBLE);
+        getActivity().findViewById(R.id.dbg_btn_container).setVisibility(View.INVISIBLE);
     }
 
     private String getSDKVersion() {

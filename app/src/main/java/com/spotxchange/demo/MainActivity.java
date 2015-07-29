@@ -74,6 +74,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         WebView cookies = (WebView)findViewById(R.id.webview_cookies);
         if (cookies != null && cookies.getVisibility() == View.VISIBLE) {
             findViewById(R.id.webview_cookies).setVisibility(View.INVISIBLE);
+            findViewById(R.id.dbg_btn_container).setVisibility(View.VISIBLE);
         }
         else if(AdViewFragment.isAdViewVisible()){
             AdViewFragment.destroyAdView();
