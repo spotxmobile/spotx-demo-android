@@ -2,12 +2,12 @@ apply plugin: 'android'
 
 repositories {
     mavenCentral()
-    maven { url "http://cloudant.github.io/cloudant-sync-eap/repository/" }
+    //maven { url "http://cloudant.github.io/cloudant-sync-eap/repository/" }
 }
 dependencies {
     compile 'net.hockeyapp.android:HockeySDK:3.0.2'
 
-    //releaseCompile 'com.spotxchange:spotx-sdk-android:1.0.1@aar'
+    //releaseCompile 'com.spotxchange:spotx-sdk-android:2.0.0@aar'
     compile project(path: ':..:spotx-sdk-android', configuration: 'debug')
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.google.android.gms:play-services:6.5.87'
