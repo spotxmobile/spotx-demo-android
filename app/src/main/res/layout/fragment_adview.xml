@@ -36,7 +36,7 @@
 
             android:text="@string/loading_text"
             android:textColor="#666666"
-            android:layout_below="@+id/button_load_adview"
+            android:layout_below="@+id/button_load_ssl_adview"
             android:layout_alignStart="@+id/button_load_adview"
             android:textStyle="bold"/>
 
@@ -71,6 +71,17 @@
             android:textColor="@color/spotxgreen"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/button_load_ssl_adview"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:text="LOAD NEW SSL AD"
+            android:layout_below="@+id/button_load_adview"
+            android:layout_alignStart="@+id/button_launch_adview"
+            android:layout_alignParentEnd="false"
+            android:textColor="@color/spotxblue"
             android:textStyle="bold"/>
     </RelativeLayout>
 </RelativeLayout>

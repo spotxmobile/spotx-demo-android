@@ -6,7 +6,6 @@ repositories {
 }
 dependencies {
     compile 'net.hockeyapp.android:HockeySDK:3.0.2'
-
     //releaseCompile 'com.spotxchange:spotx-sdk-android:2.0.0@aar'
     compile project(path: ':..:spotx-sdk-android')
     compile 'com.android.support:appcompat-v7:22.2.0'
