@@ -124,6 +124,18 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
         return adView;
     }
 
+    private SpotxAdView createNewAdViewSsl(SpotxAdListener adListener) {
+        String appDomain = getActivity().getString(R.string.app_domain);
+        SpotxAdSettings settings = new SpotxAdSettings(getChannelIdFromEditText(), appDomain, "interstitial");
+        settings.setUseSecureConnection(true);
+        SpotxAdView adView = (SpotxAdView) LayoutInflater.from(getActivity()).inflate(R.layout.adview, _layout, false);
+        adView.setAdSettings(settings);
+        adView.setVisibility(View.INVISIBLE);
+        adView.setAdListener(adListener);
+        adView.init();
+        return adView;
+    }
+
     private void setLaunchButtonLoading() {
         _layout.findViewById(R.id.button_launch_adview).setEnabled(false);
         ((Button) _layout.findViewById(R.id.button_launch_adview)).setTextColor(getResources().getColor(R.color.gray));
@@ -154,6 +166,23 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
                         _adView = null;
                     }
                     _adView = createNewAdView(_adListener);
+                    _layout.addView(_adView);
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case R.id.button_load_ssl_adview:
+                try {
+                    Log.d(TAG, "reload ssl button clicked");
+                    setLaunchButtonLoading();
+                    if (_adView != null) {
+                        _adView.unsetAdListener();
+                        _layout.removeView(_adView);
+                        _adView = null;
+                    }
+                    _adView = createNewAdViewSsl(_adListener);
                     _layout.addView(_adView);
                 }
                 catch (Exception e) {
