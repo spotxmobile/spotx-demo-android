@@ -91,6 +91,7 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
 
         _layout.findViewById(R.id.button_load_adview).setOnClickListener(this);
         _layout.findViewById(R.id.button_launch_adview).setOnClickListener(this);
+        _layout.findViewById(R.id.button_load_ssl_adview).setOnClickListener(this);
         return _layout;
     }
 
