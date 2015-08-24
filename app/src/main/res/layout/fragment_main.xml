@@ -1,68 +1,62 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/black"
-    tools:context=".main">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".main"
+                android:padding="10dp">
 
     <Button
-        android:id="@+id/button_programmatic_example"
-        android:layout_width="match_parent"
+        android:id="@+id/button_adview_example"
+        android:layout_width="200dp"
         android:layout_height="50dp"
+
+        android:text="Ad Example"
+        android:textColor="@color/spotxblue"
+        android:textStyle="bold"
+        android:layout_above="@+id/button_testsuite"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/button_testsuite"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+
+        android:text="MRAID Tests"
+        android:textStyle="bold"
+        android:layout_above="@+id/button_debug"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/button_debug"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+
+        android:text="@string/debug_info"
+
+        android:textStyle="bold"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
+
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/imageView"
         android:layout_alignParentTop="true"
-
-        android:text="Programmatic Example (Inline)"
-        android:textColor="@android:color/white"/>
-
-    <Button
-        android:id="@+id/button_xml_example"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/button_programmatic_example"
-
-        android:text="XML Example (Inline)"
-        android:textColor="@android:color/white"/>
-
-    <Button
-        android:id="@+id/button_interstitial_activity_example"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/button_xml_example"
-
-        android:text="Interstitial Activity Example"
-        android:textColor="@android:color/white"/>
-
-    <Button
-        android:id="@+id/button_interstitial_view_example"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/button_interstitial_activity_example"
-
-        android:text="Interstitial View Example"
-        android:textColor="@android:color/white"/>
-
-    <Button
-        android:id="@+id/button_cookies"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/button_interstitial_view_example"
-
-        android:text="Debug Information"
-        android:textColor="@android:color/white"/>
+        android:layout_alignParentStart="false"
+        android:src="@drawable/spotx_logo_trans"/>
 
     <TextView
-        android:id="@+id/sdk_version_label"
-        android:text="@string/sdk_version_string"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_alignParentBottom="true" />
-
-    <WebView
-        android:id="@+id/webview_cookies"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:visibility="invisible"
-        />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/app_name"
+        android:id="@+id/textView"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="5dp"/>
 
 </RelativeLayout>
