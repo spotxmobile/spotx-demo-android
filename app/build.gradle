@@ -2,7 +2,6 @@ apply plugin: 'android'
 
 repositories {
     mavenCentral()
-    maven { url "http://cloudant.github.io/cloudant-sync-eap/repository/" }
 }
 dependencies {
     compile 'net.hockeyapp.android:HockeySDK:3.0.2'
@@ -22,7 +21,7 @@ android {
         applicationId 'com.spotxchange.demo'
         minSdkVersion 19
         targetSdkVersion 22
-        versionName '2.1'
+        versionName '2.0'
         versionCode VERSION_CODE
     }
 
