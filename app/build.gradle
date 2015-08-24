@@ -4,22 +4,24 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    compile 'com.google.android.gms:play-services:+'
     compile 'net.hockeyapp.android:HockeySDK:3.0.2'
-    compile 'com.spotxchange:spotx-sdk-android:1.0.2@aar'
+    //releaseCompile 'com.spotxchange:spotx-sdk-android:2.0.0@aar'
+    compile project(path: ':..:spotx-sdk-android')
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.google.android.gms:play-services:6.5.87'
 }
 
 def VERSION_CODE = (new Date()).format('yyyyMMddHH').toInteger()
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion '19.1.0'
+    compileSdkVersion 22
+    buildToolsVersion '22.0.1'
 
     defaultConfig {
         applicationId 'com.spotxchange.demo'
-        minSdkVersion 15
-        targetSdkVersion 19
-        versionName '1.0'
+        minSdkVersion 19
+        targetSdkVersion 22
+        versionName '2.0'
         versionCode VERSION_CODE
     }
 
@@ -47,4 +49,3 @@ android {
     productFlavors {
     }
 }
-
