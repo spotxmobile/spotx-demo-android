@@ -11,7 +11,16 @@ dependencies {
     compile 'com.google.android.gms:play-services:6.5.87'
 }
 
+def KEYSTORE = System.getenv("KEYSTORE");
+def KEYSTORE_PASS = System.getenv("KEYSTORE_PASS")
+def KEYSTORE_KEY_PASS = System.getenv("KEYSTORE_KEY_PASS")
+
 def VERSION_CODE = (new Date()).format('yyyyMMddHH').toInteger()
+
+println "######################################################"
+println "KEYSTORE:" + KEYSTORE
+println "######################################################"
+
 
 android {
     compileSdkVersion 22
@@ -31,11 +40,11 @@ android {
     //   KEY_PASSWD      - Password for the "spotx" signing key
     signingConfigs {
         release {
-            if (System.getenv("KEYSTORE")) {
-                storeFile file(System.getenv("KEYSTORE"))
-                storePassword System.getenv("KEYSTORE_PASSWD")
+            if (KEYSTORE) {
+                storeFile file(KEYSTORE)
+                storePassword KEYSTORE_PASS
                 keyAlias "spotx"
-                keyPassword System.getenv("KEYSTORE_KEY_PASSWD")
+                keyPassword KEYSTORE_KEY_PASS
             }
         }
     }
