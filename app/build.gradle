@@ -35,7 +35,7 @@ android {
                 storeFile file(System.getenv("KEYSTORE"))
                 storePassword System.getenv("KEYSTORE_PASSWD")
                 keyAlias "spotx"
-                keyPassword System.getenv("KEY_PASSWD")
+                keyPassword System.getenv("KEYSTORE_KEY_PASSWD")
             }
         }
     }
