@@ -39,8 +39,11 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
             @Override
             public void adLoaded() {
                 Log.d(TAG, "Ad was loaded.");
-                _layout.findViewById(R.id.button_launch_adview).setVisibility(View.VISIBLE);
-                setLaunchButtonLoaded();
+
+                if (isAdded()) {
+                    _layout.findViewById(R.id.button_launch_adview).setVisibility(View.VISIBLE);
+                    setLaunchButtonLoaded();
+                }
             }
 
             @Override
@@ -67,8 +70,11 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
                     _layout.removeView(_adView);
                     _adView = null;
                 }
-                Toast.makeText(getActivity(), "Ad failed with error.", Toast.LENGTH_SHORT).show();
-                setLaunchButtonInvisible();
+
+                if (isAdded()) {
+                    Toast.makeText(getActivity(), "Ad failed with error.", Toast.LENGTH_SHORT).show();
+                    setLaunchButtonInvisible();
+                }
             }
 
             @Override
