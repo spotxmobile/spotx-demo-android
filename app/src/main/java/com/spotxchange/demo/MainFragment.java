@@ -25,8 +25,8 @@ public class MainFragment extends Fragment {
     }
 
     private void getReferenceToResources() {
-        _layout.findViewById(R.id.button_adview_example).setOnClickListener((MainActivity)getActivity());
+        /*_layout.findViewById(R.id.button_adview_example).setOnClickListener((MainActivity)getActivity());
         _layout.findViewById(R.id.button_debug).setOnClickListener((MainActivity)getActivity());
-        _layout.findViewById(R.id.button_testsuite).setOnClickListener((MainActivity)getActivity());
+        _layout.findViewById(R.id.button_testsuite).setOnClickListener((MainActivity)getActivity());*/
     }
 }

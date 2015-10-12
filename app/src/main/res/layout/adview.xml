@@ -6,6 +6,7 @@
     android:visibility="invisible"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:id="@+id/ad"
 
     spotx:channel_id="85394"
     spotx:app_domain="@string/app_domain"

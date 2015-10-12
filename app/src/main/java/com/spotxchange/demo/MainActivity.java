@@ -2,12 +2,15 @@ package com.spotxchange.demo;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
+
+import com.google.android.gms.ads.AdView;
 
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.UpdateManager;
@@ -66,6 +69,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.button_testsuite:
                 loadTestSuiteFragment();
                 break;
+            case R.id.button_inline_example:
+                loadInlineFragment();
+                break;
         }
     }
 
@@ -95,29 +101,26 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void loadAdViewFragment() {
-        AdViewFragment fragment = new AdViewFragment();
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.activity_main_container, fragment);
-        fragmentTransaction.addToBackStack(AdViewFragment.TAG);
-        fragmentTransaction.commit();
+        loadFragment(AdViewFragment.newInstance(), AdViewFragment.TAG);
+    }
+
+    private void loadInlineFragment() {
+        loadFragment(AdViewFragment.newInstance(R.layout.fragment_scrollcontent), AdViewFragment.TAG);
     }
 
     private void loadDebugFragment() {
-        DebugViewFragment fragment = new DebugViewFragment();
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.activity_main_container, fragment);
-        fragmentTransaction.addToBackStack(this.TAG);
-        fragmentTransaction.commit();
+        loadFragment(new DebugViewFragment(), this.TAG);
     }
 
     private void loadTestSuiteFragment() {
-        TestSuiteViewFragment fragment = new TestSuiteViewFragment();
+        loadFragment(new TestSuiteViewFragment(), null);
+    }
+
+    private void loadFragment(Fragment f, String backstackTag) {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.activity_main_container, fragment);
-        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.activity_main_container, f);
+        fragmentTransaction.addToBackStack(backstackTag);
         fragmentTransaction.commit();
     }
 }
