@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdView;
 import com.spotxchange.sdk.android.SpotxAdListener;
 import com.spotxchange.sdk.android.SpotxAdSettings;
 import com.spotxchange.sdk.android.SpotxAdView;
@@ -21,6 +22,8 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
     public final static String TAG = AdViewFragment.class.getSimpleName();
 
     private RelativeLayout _layout;
+    private int _layoutMain;
+    private int _layoutAd;
     private static SpotxAdView _adView;
     private SpotxAdListener _adListener;
 
@@ -28,9 +31,30 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
         // Required empty public constructor
     }
 
+    public static AdViewFragment newInstance() {
+        return newInstance(R.layout.fragment_adview);
+    }
+
+    public static AdViewFragment newInstance(int layout) {
+        AdViewFragment f = new AdViewFragment();
+
+        Bundle args = new Bundle();
+        args.putInt("layout_ad", layout);
+        f.setArguments(args);
+
+        return f;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        _layout = (RelativeLayout)inflater.inflate(R.layout.fragment_adview, container, false);
+        _layoutMain = R.layout.fragment_adview;
+        _layoutAd = R.layout.adview;
+
+        if (getArguments()  != null) {
+            _layoutAd = getArguments().getInt("layout_ad", R.layout.fragment_adview);
+        }
+
+        _layout = (RelativeLayout)inflater.inflate(_layoutMain, container, false);
 
         ((EditText) _layout.findViewById(R.id.edittext_launch_adview_channel_id)).setHint(
                 getActivity().getString(R.string.default_channel));
@@ -123,7 +147,8 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
     private SpotxAdView createNewAdView(SpotxAdListener adListener) {
         String appDomain = getActivity().getString(R.string.app_domain);
         SpotxAdSettings settings = new SpotxAdSettings(getChannelIdFromEditText(), appDomain, "interstitial");
-        SpotxAdView adView = (SpotxAdView) LayoutInflater.from(getActivity()).inflate(R.layout.adview, _layout, false);
+        View adRootView = LayoutInflater.from(getActivity()).inflate(_layoutAd, _layout, false);
+        SpotxAdView adView = (SpotxAdView) adRootView.findViewById(R.id.ad);
         adView.setAdSettings(settings);
         adView.setVisibility(View.INVISIBLE);
         adView.setAdListener(adListener);
@@ -135,7 +160,8 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
         String appDomain = getActivity().getString(R.string.app_domain);
         SpotxAdSettings settings = new SpotxAdSettings(getChannelIdFromEditText(), appDomain, "interstitial");
         settings.setUseSecureConnection(true);
-        SpotxAdView adView = (SpotxAdView) LayoutInflater.from(getActivity()).inflate(R.layout.adview, _layout, false);
+        View adRootView = LayoutInflater.from(getActivity()).inflate(_layoutAd, _layout, false);
+        SpotxAdView adView = (SpotxAdView) adRootView.findViewById(R.id.ad);
         adView.setAdSettings(settings);
         adView.setVisibility(View.INVISIBLE);
         adView.setAdListener(adListener);

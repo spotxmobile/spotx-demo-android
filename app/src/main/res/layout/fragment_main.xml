@@ -13,8 +13,25 @@
         android:text="Ad Example"
         android:textColor="@color/spotxblue"
         android:textStyle="bold"
-        android:layout_above="@+id/button_testsuite"
-        android:layout_centerHorizontal="true"/>
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:onClick="onClick"
+        />
+
+    <Button
+        android:id="@+id/button_inline_example"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+
+        android:text="Inline Example"
+        android:textColor="@color/spotxblue"
+        android:textStyle="bold"
+        android:layout_below="@+id/button_adview_example"
+        android:layout_alignStart="@+id/button_adview_example"
+
+        android:onClick="onClick"
+        />
 
     <Button
         android:id="@+id/button_testsuite"
@@ -23,8 +40,10 @@
 
         android:text="MRAID Tests"
         android:textStyle="bold"
-        android:layout_above="@+id/button_debug"
-        android:layout_centerHorizontal="true"/>
+        android:layout_below="@+id/button_inline_example"
+        android:layout_alignStart="@+id/button_inline_example"
+        android:onClick="onClick"
+        />
 
     <Button
         android:id="@+id/button_debug"
@@ -34,10 +53,10 @@
         android:text="@string/debug_info"
 
         android:textStyle="bold"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
-
-
+        android:layout_below="@+id/button_testsuite"
+        android:layout_alignStart="@+id/button_testsuite"
+        android:onClick="onClick"
+        />
 
     <ImageView
         android:layout_width="75dp"
