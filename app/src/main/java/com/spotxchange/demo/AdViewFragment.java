@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdView;
 import com.spotxchange.sdk.android.SpotxAdListener;
 import com.spotxchange.sdk.android.SpotxAdSettings;
 import com.spotxchange.sdk.android.SpotxAdView;
@@ -24,7 +23,7 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
     private RelativeLayout _layout;
     private int _layoutMain;
     private int _layoutAd;
-    private static SpotxAdView _adView;
+    private static View _adView;
     private SpotxAdListener _adListener;
 
     public AdViewFragment() {
@@ -80,7 +79,7 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
             public void adCompleted() {
                 Log.d(TAG, "Ad has completed.");
                 if (_adView != null) {
-                    _adView.unsetAdListener();
+                    ((SpotxAdView) _adView.findViewById(R.id.ad)).unsetAdListener();
                     _layout.removeView(_adView);
                     _adView = null;
                 }
@@ -90,7 +89,7 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
             public void adError() {
                 Log.d(TAG, "Ad failed with error");
                 if (_adView != null) {
-                    _adView.unsetAdListener();
+                    ((SpotxAdView) _adView.findViewById(R.id.ad)).unsetAdListener();
                     _layout.removeView(_adView);
                     _adView = null;
                 }
@@ -105,7 +104,7 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
             public void adExpired() {
                 Log.d(TAG, "Ad has expired");
                 if (_adView != null) {
-                    _adView.unsetAdListener();
+                    ((SpotxAdView) _adView.findViewById(R.id.ad)).unsetAdListener();
                     _layout.removeView(_adView);
                     _adView = null;
                 }
@@ -144,29 +143,31 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
         return result;
     }
 
-    private SpotxAdView createNewAdView(SpotxAdListener adListener) {
+    private View createNewAdView(SpotxAdListener adListener) {
         String appDomain = getActivity().getString(R.string.app_domain);
         SpotxAdSettings settings = new SpotxAdSettings(getChannelIdFromEditText(), appDomain, "interstitial");
         View adRootView = LayoutInflater.from(getActivity()).inflate(_layoutAd, _layout, false);
+        adRootView.setVisibility(View.INVISIBLE);
         SpotxAdView adView = (SpotxAdView) adRootView.findViewById(R.id.ad);
         adView.setAdSettings(settings);
-        adView.setVisibility(View.INVISIBLE);
+        adView.setVisibility(View.VISIBLE);
         adView.setAdListener(adListener);
         adView.init();
-        return adView;
+        return adRootView;
     }
 
-    private SpotxAdView createNewAdViewSsl(SpotxAdListener adListener) {
+    private View createNewAdViewSsl(SpotxAdListener adListener) {
         String appDomain = getActivity().getString(R.string.app_domain);
         SpotxAdSettings settings = new SpotxAdSettings(getChannelIdFromEditText(), appDomain, "interstitial");
         settings.setUseSecureConnection(true);
         View adRootView = LayoutInflater.from(getActivity()).inflate(_layoutAd, _layout, false);
         SpotxAdView adView = (SpotxAdView) adRootView.findViewById(R.id.ad);
+        adRootView.setVisibility(View.INVISIBLE);
         adView.setAdSettings(settings);
-        adView.setVisibility(View.INVISIBLE);
+        adView.setVisibility(View.VISIBLE);
         adView.setAdListener(adListener);
         adView.init();
-        return adView;
+        return adRootView;
     }
 
     private void setLaunchButtonLoading() {
@@ -194,7 +195,7 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
                     Log.d(TAG, "reload button clicked");
                     setLaunchButtonLoading();
                     if (_adView != null) {
-                        _adView.unsetAdListener();
+                        ((SpotxAdView) _adView.findViewById(R.id.ad)).unsetAdListener();
                         _layout.removeView(_adView);
                         _adView = null;
                     }
@@ -211,7 +212,7 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
                     Log.d(TAG, "reload ssl button clicked");
                     setLaunchButtonLoading();
                     if (_adView != null) {
-                        _adView.unsetAdListener();
+                        ((SpotxAdView) _adView.findViewById(R.id.ad)).unsetAdListener();
                         _layout.removeView(_adView);
                         _adView = null;
                     }
