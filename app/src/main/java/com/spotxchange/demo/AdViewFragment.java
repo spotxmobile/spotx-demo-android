@@ -1,7 +1,7 @@
 package com.spotxchange.demo;
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,20 +18,18 @@ import com.spotxchange.sdk.android.SpotxAdView;
 
 public class AdViewFragment extends Fragment implements View.OnClickListener{
 
-    public final static String TAG = AdViewFragment.class.getSimpleName();
+    public final static String TAG = InlineAdViewFragment.class.getSimpleName();
 
-    private RelativeLayout _layout;
-    private int _layoutMain;
-    private int _layoutAd;
+
     private static View _adView;
     private SpotxAdListener _adListener;
 
+    protected RelativeLayout _layout;
+    protected int _layoutMain;
+    protected int _layoutAd;
+
     public AdViewFragment() {
         // Required empty public constructor
-    }
-
-    public static AdViewFragment newInstance() {
-        return newInstance(R.layout.fragment_adview);
     }
 
     public static AdViewFragment newInstance(int layout) {
@@ -143,31 +141,39 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
         return result;
     }
 
-    private View createNewAdView(SpotxAdListener adListener) {
-        String appDomain = getActivity().getString(R.string.app_domain);
-        SpotxAdSettings settings = new SpotxAdSettings(getChannelIdFromEditText(), appDomain, "interstitial");
+    protected View createNewAdView(SpotxAdListener adListener, SpotxAdSettings settings) {
+        /*
+        SpotxAdView adView = (SpotxAdView) LayoutInflater.from(getActivity()).inflate(_layoutAd, _layout, false);
+        adView.setAdSettings(settings);
+        adView.setVisibility(View.INVISIBLE);
+        adView.setAdListener(adListener);
+        adView.init();
+        return adView;*/
+
         View adRootView = LayoutInflater.from(getActivity()).inflate(_layoutAd, _layout, false);
         adRootView.setVisibility(View.INVISIBLE);
         SpotxAdView adView = (SpotxAdView) adRootView.findViewById(R.id.ad);
+        if (adView == null) {
+            adView = (SpotxAdView) adRootView;
+        }
         adView.setAdSettings(settings);
-        adView.setVisibility(View.VISIBLE);
+        //adView.setVisibility(View.VISIBLE);
         adView.setAdListener(adListener);
         adView.init();
         return adRootView;
     }
 
-    private View createNewAdViewSsl(SpotxAdListener adListener) {
+    protected View createNewAdView(SpotxAdListener adListener) {
+        String appDomain = getActivity().getString(R.string.app_domain);
+        SpotxAdSettings settings = new SpotxAdSettings(getChannelIdFromEditText(), appDomain, "interstitial");
+        return createNewAdView(adListener, settings);
+    }
+
+    protected View createNewAdViewSsl(SpotxAdListener adListener) {
         String appDomain = getActivity().getString(R.string.app_domain);
         SpotxAdSettings settings = new SpotxAdSettings(getChannelIdFromEditText(), appDomain, "interstitial");
         settings.setUseSecureConnection(true);
-        View adRootView = LayoutInflater.from(getActivity()).inflate(_layoutAd, _layout, false);
-        SpotxAdView adView = (SpotxAdView) adRootView.findViewById(R.id.ad);
-        adRootView.setVisibility(View.INVISIBLE);
-        adView.setAdSettings(settings);
-        adView.setVisibility(View.VISIBLE);
-        adView.setAdListener(adListener);
-        adView.init();
-        return adRootView;
+        return createNewAdView(adListener, settings);
     }
 
     private void setLaunchButtonLoading() {
