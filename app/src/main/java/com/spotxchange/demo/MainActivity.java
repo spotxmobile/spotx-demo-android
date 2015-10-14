@@ -105,7 +105,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void loadInlineFragment() {
-        loadFragment(InlineAdViewFragment.newInstance(R.layout.fragment_scrollcontent), AdViewFragment.TAG);
+        loadFragment(AdViewFragment.newInstance(R.layout.fragment_scrollcontent), AdViewFragment.TAG);
     }
 
     private void loadDebugFragment() {
