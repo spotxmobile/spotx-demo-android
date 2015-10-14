@@ -18,8 +18,7 @@ import com.spotxchange.sdk.android.SpotxAdView;
 
 public class AdViewFragment extends Fragment implements View.OnClickListener{
 
-    public final static String TAG = InlineAdViewFragment.class.getSimpleName();
-
+    public final static String TAG = AdViewFragment.class.getSimpleName();
 
     private static View _adView;
     private SpotxAdListener _adListener;
