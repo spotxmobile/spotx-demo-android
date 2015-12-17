@@ -24,7 +24,7 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
 
-        android:text="Inline Example"
+        android:text="In Content Example"
         android:textColor="@color/spotxblue"
         android:textStyle="bold"
         android:layout_below="@+id/button_adview_example"

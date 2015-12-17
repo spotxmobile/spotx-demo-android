@@ -7,4 +7,6 @@
     <color name="spotxblue">#1b9dd0</color>
     <color name="spotxgreen">#9ac83c</color>
     <color name="gray">#666666</color>
+    <color name="gray_bar">#bcbec0</color>
+    <color name="gray_background">#808285</color>
 </resources>

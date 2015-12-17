@@ -11,6 +11,8 @@
     <string name="launch_text">Launch Ad</string>
     <string name="loading_text">Loading Ad...</string>
     <string name="app_domain">com.spotxchange.demo</string>
+    <string name="title_adview_example">SpotX AdView Example</string>
+    <string name="title_incontent_example">SpotX In Content Example</string>
     <string name="interstitial">interstitial</string>
     <!-- <string name="default_channel">68801</string> -->
     <string name="default_channel">85394</string>

@@ -1,15 +1,24 @@
 package com.spotxchange.demo;
 
+import android.animation.ValueAnimator;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.spotxchange.sdk.android.SpotxAdListener;
 import com.spotxchange.sdk.android.SpotxAdSettings;
@@ -26,6 +35,8 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
     protected RelativeLayout _layout;
     protected int _layoutMain;
     protected int _layoutAd;
+
+    protected boolean _collapseAd = false;
 
     public AdViewFragment() {
         // Required empty public constructor
@@ -55,6 +66,10 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
         ((EditText) _layout.findViewById(R.id.edittext_launch_adview_channel_id)).setHint(
                 getActivity().getString(R.string.default_channel));
 
+        if (isInContentMode()) {
+            ((TextView)_layout.findViewById(R.id.textViewTitle)).setText(R.string.title_incontent_example);
+        }
+
         _adListener = new SpotxAdListener() {
             @Override
             public void adLoaded() {
@@ -77,7 +92,8 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
                 Log.d(TAG, "Ad has completed.");
                 if (_adView != null) {
                     ((SpotxAdView) _adView.findViewById(R.id.ad)).unsetAdListener();
-                    _layout.removeView(_adView);
+
+                    closeAdView();
                     _adView = null;
                 }
             }
@@ -87,7 +103,7 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
                 Log.d(TAG, "Ad failed with error");
                 if (_adView != null) {
                     ((SpotxAdView) _adView.findViewById(R.id.ad)).unsetAdListener();
-                    _layout.removeView(_adView);
+                    closeAdView();
                     _adView = null;
                 }
 
@@ -102,7 +118,7 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
                 Log.d(TAG, "Ad has expired");
                 if (_adView != null) {
                     ((SpotxAdView) _adView.findViewById(R.id.ad)).unsetAdListener();
-                    _layout.removeView(_adView);
+                    closeAdView();
                     _adView = null;
                 }
                 Toast.makeText(getActivity(), "Ad expired. Ad has been purged.", Toast.LENGTH_SHORT).show();
@@ -141,22 +157,18 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
     }
 
     protected View createNewAdView(SpotxAdListener adListener, SpotxAdSettings settings) {
-        /*
-        SpotxAdView adView = (SpotxAdView) LayoutInflater.from(getActivity()).inflate(_layoutAd, _layout, false);
-        adView.setAdSettings(settings);
-        adView.setVisibility(View.INVISIBLE);
-        adView.setAdListener(adListener);
-        adView.init();
-        return adView;*/
-
         View adRootView = LayoutInflater.from(getActivity()).inflate(_layoutAd, _layout, false);
         adRootView.setVisibility(View.INVISIBLE);
+
+        if (isInContentMode()) {
+            configureInContentView(adRootView);
+        }
+
         SpotxAdView adView = (SpotxAdView) adRootView.findViewById(R.id.ad);
         if (adView == null) {
             adView = (SpotxAdView) adRootView;
         }
         adView.setAdSettings(settings);
-        //adView.setVisibility(View.VISIBLE);
         adView.setAdListener(adListener);
         adView.init();
         return adRootView;
@@ -190,6 +202,65 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
 
     private void setLaunchButtonInvisible() {
         _layout.findViewById(R.id.button_launch_adview).setVisibility(View.INVISIBLE);
+    }
+
+    private boolean isInContentMode() {
+        return (_layoutAd == R.layout.fragment_scrollcontent);
+    }
+
+    private void configureInContentView(View parentView) {
+        // configure collapse toggle button
+        ToggleButton toggle = (ToggleButton)parentView.findViewById(R.id.collapseAdToggle);
+        final SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+        if (null != preferences) {
+            _collapseAd = preferences.getBoolean("COLLAPSE_PLAYER", false);
+        }
+        toggle.setChecked(_collapseAd);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                _collapseAd = isChecked;
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putBoolean("COLLAPSE_PLAYER", _collapseAd);
+                editor.commit();
+            }
+        });
+
+        // add the "content" rows
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        TableLayout contentTable = (TableLayout)parentView.findViewById(R.id.contentTable);
+
+        // add rows above the ad
+        for (int n = 0; n < 12; n++) {
+            TableRow row = (TableRow)inflater.inflate(R.layout.row_colorbar, null, false);
+            contentTable.addView(row, 1);
+        }
+
+        // add rows below the ad
+        for (int n = 0; n < 8; n++) {
+            TableRow row = (TableRow)inflater.inflate(R.layout.row_colorbar, null, false);
+            contentTable.addView(row);
+        }
+    }
+
+    private void closeAdView() {
+        if ((true == _collapseAd) && (true == isAdViewVisible())) {
+            // animate the collapsing of the ad
+            Context context = getActivity();
+            final TableRow row = (TableRow)_layout.findViewById(R.id.adRow);
+            final LinearLayout adContainer = (LinearLayout)row.findViewById(R.id.adContainer);
+
+            final ValueAnimator valueAnimator = ValueAnimator.ofInt(adContainer.getHeight(), 0);
+            valueAnimator.setDuration(1000);
+            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    Integer value = (Integer) animation.getAnimatedValue();
+                    adContainer.getLayoutParams().height = value.intValue();
+                    adContainer.requestLayout();
+                }
+            });
+            valueAnimator.start();
+        }
     }
 
     @Override
