@@ -1,34 +1,25 @@
 package com.spotxchange.demo;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mopub.common.MoPub;
 import com.mopub.common.MoPubReward;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubRewardedVideoListener;
-import com.spotxchange.sdk.android.SpotxAdListener;
-import com.spotxchange.sdk.android.SpotxAdSettings;
-import com.spotxchange.sdk.android.SpotxAdView;
+
 import com.spotxchange.sdk.mopubintegration.SpotxRewardedVideo.SpotxMediationSettings;
 
 import net.hockeyapp.android.CrashManager;
 
 import java.util.Set;
 
-/**
- * Created by zmiller on 1/12/16.
- */
 public class SpotxRewardedVideoActivity extends Activity implements View.OnClickListener {
 
     private MoPubRewardedVideoListener rewardedVideoListener;
@@ -55,9 +46,7 @@ public class SpotxRewardedVideoActivity extends Activity implements View.OnClick
         MoPub.onCreate(this);
         setRewardedVideoListener();
         MoPub.setRewardedVideoListener(rewardedVideoListener);
-
-        findViewById(R.id.button_show_rewarded_video).setEnabled(false);
-        ((Button) findViewById(R.id.button_show_rewarded_video)).setTextColor(getResources().getColor(R.color.gray));
+        setButtonEnabledStatus(R.id.button_show_rewarded_video, false);
     }
 
     @Override
@@ -68,9 +57,7 @@ public class SpotxRewardedVideoActivity extends Activity implements View.OnClick
                 break;
             case R.id.button_show_rewarded_video:
                 MoPub.showRewardedVideo("5f56564aa4b1487cabb9b59cc3134b93");
-
-                findViewById(R.id.button_show_rewarded_video).setEnabled(false);
-                ((Button) findViewById(R.id.button_show_rewarded_video)).setTextColor(getResources().getColor(R.color.gray));
+                setButtonEnabledStatus(R.id.button_show_rewarded_video, false);
                 break;
         }
     }
@@ -81,13 +68,18 @@ public class SpotxRewardedVideoActivity extends Activity implements View.OnClick
         }
     }
 
+    private void setButtonEnabledStatus(int iButtonId, boolean bIsEnabled){
+        findViewById(iButtonId).setEnabled(bIsEnabled);
+        int iColorId = bIsEnabled ? R.color.spotxblue : R.color.gray;
+        ((Button) findViewById(iButtonId)).setTextColor(getResources().getColor(iColorId));
+    }
+
     private void setRewardedVideoListener(){
         rewardedVideoListener = new MoPubRewardedVideoListener() {
             @Override
             public void onRewardedVideoLoadSuccess(String adUnitId) {
                 showToast("Video loaded!");
-                findViewById(R.id.button_show_rewarded_video).setEnabled(true);
-                ((Button) findViewById(R.id.button_show_rewarded_video)).setTextColor(getResources().getColor(R.color.spotxblue));
+                setButtonEnabledStatus(R.id.button_show_rewarded_video, true);
             }
 
             @Override
