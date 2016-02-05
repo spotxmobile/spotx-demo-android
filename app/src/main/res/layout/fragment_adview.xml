@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/holo_blue_light"
             android:textSize="16dp"
-            android:inputType="number"
+            android:inputType="text"
             android:textColorHint="@color/common_signin_btn_light_text_disabled"
             android:background="#dedede"
             android:padding="5dp"
