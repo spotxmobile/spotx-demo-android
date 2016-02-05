@@ -36,6 +36,7 @@ public class BrightcoveTestActivity extends BrightcovePlayer implements View.OnC
     private Button _playBtn;
 
     private CuePoint _cue;
+    private SpotxBrightcovePlugin _plugin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,9 +84,9 @@ public class BrightcoveTestActivity extends BrightcovePlayer implements View.OnC
         switch(v.getId()){
             case R.id.playButton:
                 // Instantiate the SpotX plugin.
-                SpotxBrightcovePlugin plugin = new SpotxBrightcovePlugin(brightcoveVideoView.getEventEmitter(), this, brightcoveVideoView);
+                _plugin = new SpotxBrightcovePlugin(brightcoveVideoView.getEventEmitter(), this, brightcoveVideoView);
                 SpotxAdSettings adSettings = new SpotxAdSettings(getChannelIdFromEditText(), "spotxchange.com");
-                plugin.init(adSettings);
+                _plugin.init(adSettings);
 
                 // Request a sample playlist from the Brightcove Media API.
                 Catalog catalog = new Catalog("ErQk9zUeDVLIp8Dc7aiHKq8hDMgkv5BFU7WGshTc-hpziB3BuYh28A..");
@@ -122,5 +123,14 @@ public class BrightcoveTestActivity extends BrightcovePlayer implements View.OnC
             e.printStackTrace();
         }
         return result;
+    }
+
+    @Override
+    public void onBackPressed() {
+        brightcoveVideoView.stopPlayback();
+        brightcoveVideoView.removeListeners();
+        brightcoveVideoView = null;
+        _plugin = null;
+        super.onBackPressed();
     }
 }
