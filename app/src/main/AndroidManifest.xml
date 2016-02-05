@@ -32,6 +32,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".brightcove.BrightcoveTestActivity" />
+
         <activity android:name="net.hockeyapp.android.UpdateActivity" />
 
     </application>

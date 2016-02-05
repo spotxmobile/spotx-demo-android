@@ -177,6 +177,10 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
     protected View createNewAdView(SpotxAdListener adListener) {
         String appDomain = getActivity().getString(R.string.app_domain);
         SpotxAdSettings settings = new SpotxAdSettings(getChannelIdFromEditText(), appDomain, "interstitial");
+        String sub = ((EditText) _layout.findViewById(R.id.subdomainText)).getText().toString();
+        if(!sub.isEmpty()){
+            settings.setSpotxSubdomain(sub);
+        }
         return createNewAdView(adListener, settings);
     }
 
@@ -184,6 +188,10 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
         String appDomain = getActivity().getString(R.string.app_domain);
         SpotxAdSettings settings = new SpotxAdSettings(getChannelIdFromEditText(), appDomain, "interstitial");
         settings.setUseSecureConnection(true);
+        String sub = ((EditText) _layout.findViewById(R.id.subdomainText)).getText().toString();
+        if(!sub.isEmpty()){
+            settings.setSpotxSubdomain(sub);
+        }
         return createNewAdView(adListener, settings);
     }
 
