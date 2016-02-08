@@ -36,6 +36,8 @@ public class BrightcoveTestActivity extends BrightcovePlayer implements View.OnC
     private Button _playBtn;
 
     private CuePoint _cue;
+    private Catalog _catalog = new Catalog("ErQk9zUeDVLIp8Dc7aiHKq8hDMgkv5BFU7WGshTc-hpziB3BuYh28A..");
+
     private SpotxBrightcovePlugin _plugin;
 
     @Override
@@ -83,34 +85,47 @@ public class BrightcoveTestActivity extends BrightcovePlayer implements View.OnC
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.playButton:
-                // Instantiate the SpotX plugin.
-                _plugin = new SpotxBrightcovePlugin(brightcoveVideoView.getEventEmitter(), this, brightcoveVideoView);
-                SpotxAdSettings adSettings = new SpotxAdSettings(getChannelIdFromEditText(), "spotxchange.com");
-                _plugin.init(adSettings);
-
-                // Request a sample playlist from the Brightcove Media API.
-                Catalog catalog = new Catalog("ErQk9zUeDVLIp8Dc7aiHKq8hDMgkv5BFU7WGshTc-hpziB3BuYh28A..");
-                catalog.findPlaylistByReferenceID("stitch", new PlaylistListener() {
-                    @Override
-                    public void onError(String error) {
-                        Log.e(TAG, error);
-                    }
-
-                    @Override
-                    public void onPlaylist(Playlist playlist) {
-                        brightcoveVideoView.addAll(playlist.getVideos());
-                        brightcoveVideoView.start();
-                    }
-                });
-
-                brightcoveVideoView.getEventEmitter().on(EventType.DID_SET_SOURCE, new EventListener() {
-                    @Override
-                    public void processEvent(Event event) {
-                        setupCuePoints();
-                    }
-                });
+                go();
                 break;
         }
+    }
+
+    private void go(){
+        if(_plugin != null){
+            _plugin.remove();
+            _plugin = null;
+        }
+
+        if(brightcoveVideoView.isPlaying()){
+            brightcoveVideoView.stopPlayback();
+        }
+
+        brightcoveVideoView.clear();
+
+        //Instantiate the SpotX plugin.
+        SpotxAdSettings adSettings = new SpotxAdSettings(getChannelIdFromEditText(), "spotxchange.com");
+        _plugin = new SpotxBrightcovePlugin(brightcoveVideoView.getEventEmitter(), this, brightcoveVideoView, adSettings);
+
+        // Request a sample playlist from the Brightcove Media API.
+        _catalog.findPlaylistByReferenceID("stitch", new PlaylistListener() {
+            @Override
+            public void onError(String error) {
+                Log.e(TAG, error);
+            }
+
+            @Override
+            public void onPlaylist(Playlist playlist) {
+                brightcoveVideoView.addAll(playlist.getVideos());
+                brightcoveVideoView.start();
+            }
+        });
+
+        brightcoveVideoView.getEventEmitter().on(EventType.DID_SET_SOURCE, new EventListener() {
+            @Override
+            public void processEvent(Event event) {
+                setupCuePoints();
+            }
+        });
     }
 
     public int getChannelIdFromEditText() {
