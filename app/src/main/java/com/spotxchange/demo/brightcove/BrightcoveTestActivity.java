@@ -142,12 +142,16 @@ public class BrightcoveTestActivity extends BrightcovePlayer implements View.OnC
 
     @Override
     protected void onDestroy() {
-        _plugin.remove();
-        _plugin.removeListeners();
-        _plugin = null;
-        brightcoveVideoView.stopPlayback();
-        brightcoveVideoView.removeListeners();
-        brightcoveVideoView = null;
+        if(_plugin != null) {
+            _plugin.remove();
+            _plugin.removeListeners();
+            _plugin = null;
+        }
+        if(brightcoveVideoView != null) {
+            brightcoveVideoView.stopPlayback();
+            brightcoveVideoView.removeListeners();
+            brightcoveVideoView = null;
+        }
         super.onDestroy();
     }
 
