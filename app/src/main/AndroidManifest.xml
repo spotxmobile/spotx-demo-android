@@ -32,7 +32,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".brightcove.BrightcoveTestActivity" />
+        <activity android:name=".brightcove.BrightcoveTestActivity"
+            android:screenOrientation="portrait" >
+        </activity>
 
         <activity android:name="net.hockeyapp.android.UpdateActivity" />
 
