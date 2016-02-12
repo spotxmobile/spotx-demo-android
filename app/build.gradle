@@ -17,6 +17,7 @@ dependencies {
     compile 'com.spotxchange:spotx-sdk-android:2.0.+'
     //compile project(path: ':..:spotx-sdk-android')
     compile project(path: ':..:spotx-brightcove-android')
+    compile project(path: ':..:spotx-mopub-android:spotx-mopub-android')
 }
 
 def KEYSTORE = System.getenv("KEYSTORE");

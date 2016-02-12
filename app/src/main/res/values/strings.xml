@@ -16,6 +16,8 @@
     <string name="interstitial">interstitial</string>
     <!-- <string name="default_channel">68801</string> -->
     <string name="default_channel">85394</string>
+    <string name="default_mopub_ad_unit_id">5f56564aa4b1487cabb9b59cc3134b93</string>
+    <string name="default_mopub_interstitial_ad_unit_id">a12ce801e2b54fa0bb80b25e7562db13</string>
     <string name="cookie_report">Cookie Report</string>
     <string name="sdk_config_report">SDK Configuration</string>
     <string name="debug_info">Debug Info</string>
@@ -32,4 +34,10 @@
     <string name="test_channel_reminder">test channel: 85394</string>
     <string name="desc">video ad</string>
     <string name="desc_logo">SpotX Logo</string>
+    <string name="title_activity_mopub_main">MopubMainActivity</string>
+    <string name="title_activity_mopub_interstitial">Mopub Interstitial</string>
+    <string name="title_activity_mopub_rewarded_video">Mopub Rewarded Video</string>
+    <string name="mopub_ad_unit_id">MoPub Ad Unit Id</string>
+    <string name="spotx_channel_id">SpotX Channel ID"</string>
+
 </resources>
