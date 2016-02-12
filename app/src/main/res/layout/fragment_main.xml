@@ -89,4 +89,15 @@
         android:layout_centerHorizontal="true"
         android:textColor="@color/spotxgreen"/>
 
+    <Button
+        android:id="@+id/button_mopub"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="MoPub"
+        android:textStyle="bold"
+        android:onClick="onClick"
+        android:layout_below="@+id/button_brightcove"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/spotxgreen"/>
+
 </RelativeLayout>

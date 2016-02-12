@@ -12,6 +12,7 @@ import android.view.View;
 import android.webkit.WebView;
 
 import com.spotxchange.demo.brightcove.BrightcoveTestActivity;
+import com.spotxchange.demo.mopub.MopubMainActivity;
 
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.UpdateManager;
@@ -76,6 +77,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.button_brightcove:
                 Intent intent = new Intent(MainActivity.this, BrightcoveTestActivity.class);
                 MainActivity.this.startActivity(intent);
+                break;
+            case R.id.button_mopub:
+                Intent mopubIntent = new Intent(MainActivity.this, MopubMainActivity.class);
+                MainActivity.this.startActivity(mopubIntent);
                 break;
         }
     }
