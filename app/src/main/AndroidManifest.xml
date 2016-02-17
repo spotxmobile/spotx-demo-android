@@ -45,7 +45,13 @@
             android:label="@string/title_activity_mopub_interstitial" />
         <activity
             android:name=".mopub.MopubRewardedVideo"
-            android:label="@string/title_activity_mopub_rewarded_video"></activity>
+            android:label="@string/title_activity_mopub_rewarded_video" />
+        <activity
+            android:name=".EASI.EASIMainActivity"
+            android:label="@string/title_activity_easimain" />
+        <activity
+            android:name=".EASI.EASIPlayerActivity"
+            android:label="@string/title_activity_easiinterstitial" />
     </application>
 
 </manifest>
