@@ -12,6 +12,11 @@
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <!-- MoPub REQUIRED PERMISSIONS -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -39,19 +44,29 @@
         <activity android:name="net.hockeyapp.android.UpdateActivity" />
         <activity
             android:name=".mopub.MopubMainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_activity_mopub_main" />
         <activity
             android:name=".mopub.MopubInterstitial"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_activity_mopub_interstitial" />
         <activity
             android:name=".mopub.MopubRewardedVideo"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_activity_mopub_rewarded_video" />
         <activity
             android:name=".EASI.EASIMainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_activity_easimain" />
         <activity
             android:name=".EASI.EASIPlayerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_activity_easiinterstitial" />
+
+        <activity android:name="com.mopub.mobileads.MoPubActivity" android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name="com.mopub.mobileads.MraidActivity" android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name="com.mopub.common.MoPubBrowser" android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name="com.mopub.mobileads.MraidVideoPlayerActivity" android:configChanges="keyboardHidden|orientation|screenSize"/>
     </application>
 
 </manifest>
