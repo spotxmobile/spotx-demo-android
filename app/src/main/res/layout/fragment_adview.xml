@@ -37,9 +37,9 @@
 
             android:text="@string/loading_text"
             android:textColor="#666666"
+            android:textStyle="bold"
             android:layout_below="@+id/button_load_ssl_adview"
-            android:layout_alignStart="@+id/button_load_adview"
-            android:textStyle="bold"/>
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,9 +48,10 @@
             android:text="@string/title_adview_example"
             android:id="@+id/textViewTitle"
             android:textStyle="bold"
-            android:layout_marginBottom="15dp"
-            android:layout_above="@+id/textView7"
-            android:layout_centerHorizontal="true"/>
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="6dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -70,20 +71,20 @@
 
             android:text="@string/load_text"
             android:textColor="@color/spotxgreen"
+            android:textStyle="bold"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:textStyle="bold"/>
+            android:layout_centerHorizontal="true"/>
 
         <Button
             android:id="@+id/button_load_ssl_adview"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:text="Load New SSL Ad"
-            android:layout_below="@+id/button_load_adview"
-            android:layout_alignStart="@+id/button_launch_adview"
             android:layout_alignParentEnd="false"
             android:textColor="@color/spotxblue"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_below="@+id/button_load_adview"
+            android:layout_centerHorizontal="true"/>
 
         <EditText
             android:visibility="visible"
@@ -98,10 +99,8 @@
             android:padding="5dp"
             android:textAlignment="center"
             android:gravity="center"
-            android:layout_above="@+id/textView4"
-            android:layout_alignStart="@+id/edittext_launch_adview_channel_id"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_below="@+id/textView7"
+            android:layout_alignStart="@+id/edittext_launch_adview_channel_id"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -110,7 +109,16 @@
             android:text="spotx subdomain"
             android:id="@+id/textView7"
             android:textColor="#666666"
-            android:layout_above="@+id/subdomainText"
+            android:layout_below="@+id/textViewTitle"
+            android:layout_centerHorizontal="true"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="end card"
+            android:id="@+id/endcard"
+            android:textColor="#555"
+            android:layout_below="@+id/subdomainText"
             android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 </RelativeLayout>
