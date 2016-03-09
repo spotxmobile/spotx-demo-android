@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -177,6 +178,10 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
     protected View createNewAdView(SpotxAdListener adListener) {
         String appDomain = getActivity().getString(R.string.app_domain);
         SpotxAdSettings settings = new SpotxAdSettings(getChannelIdFromEditText(), appDomain, "interstitial");
+        Boolean endCard = ((CheckBox) _layout.findViewById(R.id.endcard)).isChecked();
+        if(endCard){
+            settings.setEndCardDuration(5000);
+        }
         String sub = ((EditText) _layout.findViewById(R.id.subdomainText)).getText().toString();
         if(!sub.isEmpty()){
             //settings.setSpotxSubdomain(sub);
@@ -188,6 +193,10 @@ public class AdViewFragment extends Fragment implements View.OnClickListener{
         String appDomain = getActivity().getString(R.string.app_domain);
         SpotxAdSettings settings = new SpotxAdSettings(getChannelIdFromEditText(), appDomain, "interstitial");
         settings.setUseSecureConnection(true);
+        Boolean endCard = ((CheckBox) _layout.findViewById(R.id.endcard)).isChecked();
+        if(endCard){
+            settings.setEndCardDuration(5000);
+        }
         String sub = ((EditText) _layout.findViewById(R.id.subdomainText)).getText().toString();
         if(!sub.isEmpty()){
             //settings.setSpotxSubdomain(sub);
