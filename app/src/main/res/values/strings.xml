@@ -16,6 +16,8 @@
     <string name="interstitial">interstitial</string>
     <!-- <string name="default_channel">68801</string> -->
     <string name="default_channel">85394</string>
+    <string name="default_mopub_ad_unit_id">5f56564aa4b1487cabb9b59cc3134b93</string>
+    <string name="default_mopub_interstitial_ad_unit_id">a12ce801e2b54fa0bb80b25e7562db13</string>
     <string name="cookie_report">Cookie Report</string>
     <string name="sdk_config_report">SDK Configuration</string>
     <string name="debug_info">Debug Info</string>
@@ -32,4 +34,31 @@
     <string name="test_channel_reminder">test channel: 85394</string>
     <string name="desc">video ad</string>
     <string name="desc_logo">SpotX Logo</string>
+    <string name="title_activity_mopub_main">MopubMainActivity</string>
+    <string name="title_activity_mopub_interstitial">Mopub Interstitial</string>
+    <string name="title_activity_mopub_rewarded_video">Mopub Rewarded Video</string>
+    <string name="mopub_ad_unit_id">MoPub Ad Unit Id</string>
+    <string name="spotx_channel_id">SpotX Channel ID"</string>
+    <string name="title_activity_easimain">EASI DEMO</string>
+    <string name="title_activity_easiinterstitial">EASI Interstitial</string>
+    <string name="title_activity_easiincontent">EASI In Content</string>
+
+    <string name="show_interstitial">Show Interstitial</string>
+    <string name="show_incontent">Show In Content</string>
+    <string name="default_easi_url">http://search.spotxchange.com/js/spotx.js</string>
+    <string name="default_easi_params"><![CDATA[
+        data-spotx_channel_id=\"85394\"
+        data-spotx_content_width=\"300\" data-spotx_content_height=\"300\"
+        data-spotx_ad_unit=\"incontent\"
+        data-spotx_content_type=\"game\"
+        data-spotx_content_page_url=\"http://spotx.ninja\"
+        data-spotx_app_bundle=\"com.spotx.ninja.demoapp\"
+        data-spotx_device_ifa=\"unknown\"
+        data-spotx_autoplay=\"1\"
+        data-spotx_content_container_id=\"player\"
+        data-spotx_video_slot_can_autoplay=\"1\"
+        data-spotx_ad_done_function=\"adDoneFunction\"
+        data-spotx_ad_volume=\"0\"
+       ]]></string>
+
 </resources>

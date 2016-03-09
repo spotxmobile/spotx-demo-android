@@ -5,12 +5,15 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 
-import com.google.android.gms.ads.AdView;
+import com.spotxchange.demo.EASI.EASIMainActivity;
+import com.spotxchange.demo.brightcove.BrightcoveTestActivity;
+import com.spotxchange.demo.mopub.MopubMainActivity;
 
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.UpdateManager;
@@ -71,6 +74,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.button_inline_example:
                 loadInlineFragment();
+                break;
+            case R.id.button_brightcove:
+                Intent intent = new Intent(MainActivity.this, BrightcoveTestActivity.class);
+                MainActivity.this.startActivity(intent);
+                break;
+            case R.id.button_mopub:
+                Intent mopubIntent = new Intent(MainActivity.this, MopubMainActivity.class);
+                MainActivity.this.startActivity(mopubIntent);
+                break;
+            case R.id.button_easi:
+                Intent easiIntent = new Intent(MainActivity.this, EASIMainActivity.class);
+                MainActivity.this.startActivity(easiIntent);
                 break;
         }
     }

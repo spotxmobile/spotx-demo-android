@@ -1,1 +1,1 @@
-include ':app'//, '..:spotx-sdk-android'
+include ':app', '..:spotx-brightcove-android', '..:spotx-sdk-android', '..:spotx-mopub-android:spotx-mopub-android'
