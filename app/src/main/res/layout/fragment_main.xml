@@ -34,14 +34,28 @@
         />
 
     <Button
+        android:id="@+id/button_rewarded_video_example"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+
+        android:text="Rewarded Video Example"
+        android:textColor="@color/spotxblue"
+        android:textStyle="bold"
+        android:layout_below="@+id/button_inline_example"
+        android:layout_alignStart="@+id/button_inline_example"
+
+        android:onClick="onClick"
+        />
+
+    <Button
         android:id="@+id/button_testsuite"
         android:layout_width="200dp"
         android:layout_height="50dp"
 
         android:text="MRAID Tests"
         android:textStyle="bold"
-        android:layout_below="@+id/button_inline_example"
-        android:layout_alignStart="@+id/button_inline_example"
+        android:layout_below="@+id/button_rewarded_video_example"
+        android:layout_alignStart="@+id/button_rewarded_video_example"
         android:onClick="onClick"
         />
 

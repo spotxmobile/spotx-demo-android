@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -71,6 +72,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.button_inline_example:
                 loadInlineFragment();
+                break;
+            case R.id.button_rewarded_video_example:
+                Intent intent = new Intent(this, SpotxRewardedVideoActivity.class);
+                startActivity(intent);
                 break;
         }
     }
