@@ -1,14 +1,13 @@
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 repositories {
     jcenter()
 }
 dependencies {
     compile 'net.hockeyapp.android:HockeySDK:3.0.2'
-    compile 'com.spotxchange:spotx-sdk-android:2.0.+'
-    //compile project(path: ':..:spotx-sdk-android')
-    compile 'com.android.support:appcompat-v7:22.2.0'
-    compile 'com.google.android.gms:play-services:6.5.87'
+    compile 'com.spotxchange:spotx-sdk-android:2.2.+'
+    compile 'com.android.support:appcompat-v7:23+'
+    compile 'com.google.android.gms:play-services:+'
 }
 
 def KEYSTORE = System.getenv("KEYSTORE");
@@ -23,13 +22,13 @@ println "######################################################"
 
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion '22.0.1'
+    compileSdkVersion 23
+    buildToolsVersion '23.0.3'
 
     defaultConfig {
         applicationId 'com.spotxchange.demo'
-        minSdkVersion 19
-        targetSdkVersion 22
+        minSdkVersion 17
+        targetSdkVersion 23
         versionName '2.0'
         versionCode VERSION_CODE
     }

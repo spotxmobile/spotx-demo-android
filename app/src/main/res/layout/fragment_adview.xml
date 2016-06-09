@@ -18,7 +18,6 @@
             android:textColor="@android:color/holo_blue_light"
             android:textSize="25sp"
             android:inputType="number"
-            android:textColorHint="@color/common_signin_btn_light_text_disabled"
             android:layout_above="@+id/button_load_adview"
             android:layout_centerHorizontal="true"
             android:background="#dedede"
