@@ -1,8 +1,48 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:id="@+id/activity_main_container"
-    tools:context=".main">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="demo.spotxchange.com.spotxdemo.MainActivity">
+
+    <EditText
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextChannelId"
+        android:hint="Channel ID"
+        android:gravity="center_horizontal"
+        android:numeric="integer"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="85394"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play"
+        android:id="@+id/buttonPlayAd"
+        android:layout_below="@+id/editTextChannelId"
+        android:layout_alignLeft="@+id/editTextChannelId"
+        android:layout_alignStart="@+id/editTextChannelId"
+        android:layout_alignRight="@+id/editTextChannelId"
+        android:layout_alignEnd="@+id/editTextChannelId"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:indeterminateTint="#69d3f7"
+        android:visibility="visible"/>
 
 </RelativeLayout>
