@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="log_error">#DC143C</color>
-    <color name="log_warn">#CEA867</color>
-    <color name="log_debug">#008080</color>
-    <color name="log_info">#404040</color>
-    <color name="spotxblue">#1b9dd0</color>
-    <color name="spotxgreen">#9ac83c</color>
-    <color name="gray">#666666</color>
-    <color name="gray_bar">#bcbec0</color>
-    <color name="gray_background">#808285</color>
+    <color name="colorPrimary">#8ec641</color>
+    <color name="colorPrimaryDark">#74a636</color>
+    <color name="colorAccent">#1b9dd0</color>
 </resources>
