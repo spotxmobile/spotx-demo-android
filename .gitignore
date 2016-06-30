@@ -1,4 +1,5 @@
 .DS_Store
+._.DS_Store
 .repo
 .gradle
 local.properties
@@ -6,3 +7,4 @@ local.properties
 build
 gradle.properties
 *.iml
+spotx-demo-android.iml
