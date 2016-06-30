@@ -8,3 +8,4 @@ build
 gradle.properties
 *.iml
 spotx-demo-android.iml
+
