@@ -1,5 +1,0 @@
-projectKey=spotx:demo:android
-serverUrl=http://54.67.9.75:9000
-dashboardUrl=http://54.67.9.75:9000/dashboard/index/spotx:demo:android
-ceTaskId=AVKn2k8fGlqNbzsWQ3BI
-ceTaskUrl=http://54.67.9.75:9000/api/ce/task?id=AVKn2k8fGlqNbzsWQ3BI
