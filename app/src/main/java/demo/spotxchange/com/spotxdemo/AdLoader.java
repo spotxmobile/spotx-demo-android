@@ -13,36 +13,41 @@ import com.spotxchange.v3.SpotXAdGroup;
 
 public class AdLoader extends AsyncTask<Void, Void, SpotXAdGroup> {
 
-    public interface Delegate {
+    public interface Callback {
         void adLoadingStarted();
         void adLoadingFinished(@Nullable SpotXAdGroup adGroup);
     }
 
-    private final Delegate _delegate;
     private final String _channelId;
+    private final int _count;
+    private final long _timeout;
+    private final Callback _callback;
 
-    public AdLoader(@NonNull Delegate delegate, String channelId) {
-        _delegate = delegate;
+
+    public AdLoader(String channelId, int count, long timeout, @NonNull Callback callback) {
         _channelId = channelId;
+        _count = count;
+        _timeout = timeout;
+        _callback = callback;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        _delegate.adLoadingStarted();
+        _callback.adLoadingStarted();
     }
 
     @Override
     protected void onPostExecute(SpotXAdGroup adGroup) {
         super.onPostExecute(adGroup);
-        _delegate.adLoadingFinished(adGroup);
+        _callback.adLoadingFinished(adGroup);
     }
 
     @Override
     protected SpotXAdGroup doInBackground(Void... params) {
         SpotXAdBuilder request = SpotX.newAdBuilder(_channelId);
         try {
-            return request.load().get(7, TimeUnit.SECONDS);
+            return request.loadWithCount(_count).get(_timeout, TimeUnit.SECONDS);
         }
         catch (Exception e) {
             Log.e(AdLoader.class.getSimpleName(), "Unable to load SpotX Ad", e);

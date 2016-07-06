@@ -1,10 +1,9 @@
 package demo.spotxchange.com.spotxdemo;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +16,7 @@ import com.spotxchange.v3.SpotXAd;
 import com.spotxchange.v3.SpotXAdGroup;
 import com.spotxchange.v3.view.InterstitialPresentationController;
 
-public class MainActivity extends AppCompatActivity implements AdLoader.Delegate, SpotXAdGroup.Observer, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements AdLoader.Callback, SpotXAdGroup.Observer, View.OnClickListener {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private EditText _editTextChannelId;
@@ -34,43 +33,10 @@ public class MainActivity extends AppCompatActivity implements AdLoader.Delegate
         _progressBar = (ProgressBar) findViewById(R.id.progressBar);
         _buttonPlay = (Button) findViewById(R.id.buttonPlayAd);
         _buttonPlay.setOnClickListener(this);
+
         showLoadingIndicator(false);
     }
 
-    private void showAd(final SpotXAdGroup group) {
-        new Handler(Looper.getMainLooper()).post(new Runnable() {
-            @Override
-            public void run() {
-                InterstitialPresentationController.show(MainActivity.this, group);
-            }
-        });
-    }
-
-    private void loadAd() {
-        String channelId = _editTextChannelId.getText().toString();
-        new AdLoader(this, channelId).execute();
-    }
-
-    private void showLoadingIndicator(final boolean visible) {
-        new Handler(Looper.getMainLooper()).post(new Runnable() {
-            @Override
-            public void run() {
-                _progressBar.setVisibility((visible)?View.VISIBLE:View.INVISIBLE);
-                _buttonPlay.setEnabled(!visible);
-            }
-        });
-    }
-
-    private void showNoAdsToast() {
-        new Handler(Looper.getMainLooper()).post(new Runnable() {
-            @Override
-            public void run() {
-                showLoadingIndicator(false);
-                Toast.makeText(MainActivity.this, "No Ad Found", Toast.LENGTH_LONG).show();
-                Log.d(TAG, "No Ad Found");
-            }
-        });
-    }
 
     // MARK: View OnClickListener
 
@@ -79,7 +45,16 @@ public class MainActivity extends AppCompatActivity implements AdLoader.Delegate
         loadAd();
     }
 
-    // MARK: AdLoader.Delegate
+    private void loadAd() {
+        String channel = _editTextChannelId.getText().toString();
+        if (!TextUtils.isEmpty(channel)) {
+            AdLoader loader = new AdLoader(channel, 1, 10 /*seconds*/, this);
+            loader.execute();
+        }
+    }
+
+
+    // MARK: AdLoader.Callback
 
     @Override
     public void adLoadingStarted() {
@@ -89,13 +64,28 @@ public class MainActivity extends AppCompatActivity implements AdLoader.Delegate
     @Override
     public void adLoadingFinished(@Nullable SpotXAdGroup adGroup) {
         showLoadingIndicator(false);
-        if(adGroup != null){
-            showAd(adGroup);
+        if(adGroup == null) {
+            showNoAdsMessage();
         }
         else{
-            showNoAdsToast();
+            showAd(adGroup);
         }
     }
+
+    private void showLoadingIndicator(final boolean visible) {
+        _progressBar.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
+        _buttonPlay.setEnabled(!visible);
+    }
+
+    private void showNoAdsMessage() {
+        Log.d(TAG, "No Ad Found");
+        Toast.makeText(MainActivity.this, "No Ad Found", Toast.LENGTH_LONG).show();
+    }
+
+    private void showAd(final SpotXAdGroup group) {
+        InterstitialPresentationController.show(MainActivity.this, group);
+    }
+
 
     // MARK: SpotX Observer
 
