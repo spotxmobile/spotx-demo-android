@@ -1,0 +1,8 @@
+def USE_SRC = hasProperty("USE_SRC") ? Boolean.parseBoolean(getProperty("USE_SRC")) : false;
+
+include ':simple', ':brightcove'
+
+if (USE_SRC) {
+    include ':spotx-brightcove-android-src'
+    project(':spotx-brightcove-android-src').projectDir = new File(settingsDir, '../spotx-sdk-android/adapters/v3/brightcove')
+}
