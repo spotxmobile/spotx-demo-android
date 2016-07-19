@@ -1,5 +1,3 @@
-def USE_SRC = hasProperty("USE_SRC") ? Boolean.parseBoolean(getProperty("USE_SRC")) : false;
-
 apply plugin: 'com.android.application'
 
 repositories {
@@ -30,16 +28,9 @@ android {
 }
 
 dependencies {
-    if (USE_SRC) {
-        println "BRIGHTCOVE DEMO APP - SOURCE BUILD"
-        compile project(':spotx-brightcove-android-src')
-    } else {
-        compile 'com.spotxchange:spotx-brightcove-android:2.+'
-    }
-
+    compile 'com.spotxchange:spotx-brightcove:3.0.+'
     compile "com.brightcove.player:android-sdk:4.+"
     compile 'com.android.support:appcompat-v7:24.0.0'
-
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.0.0'
