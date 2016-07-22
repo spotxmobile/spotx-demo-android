@@ -1,1 +1,1 @@
-include ':simple', ':brightcove'
+include ':simple', ':brightcove', ':mopub'

@@ -5,8 +5,8 @@ android {
     buildToolsVersion "24.0.0"
 
     defaultConfig {
-        applicationId "com.spotxchange.simple"
-        minSdkVersion 14
+        applicationId "com.spotxchange.mopub.demo"
+        minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -23,5 +23,10 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.0.0'
+
     compile 'com.spotxchange:spotx-sdk-android:3.0.2'
+    compile 'com.spotxchange:spotx-mopub-android:3.0.2'
+    compile('com.mopub:mopub-sdk:4.3.0@aar') {
+        transitive = true
+    }
 }
