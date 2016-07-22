@@ -13,7 +13,8 @@ import com.mopub.common.MoPubReward;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
 import com.mopub.mobileads.MoPubRewardedVideoListener;
-import com.spotxchange.sdk.mopubintegration.SpotXRewardedVideo;
+import com.spotxchange.v3.adapters.mopub.SpotXRewardedVideo;
+
 
 import java.util.Set;
 
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        MoPub.onCreate(this);
         setupMoPubInterstitial();
         setupMoPubRewardedVideo();
     }
@@ -58,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupMoPubRewardedVideo() {
         MoPub.initializeRewardedVideo(this);
-        MoPub.onCreate(this);
         MoPub.setRewardedVideoListener(_rewardedAdListener);
 
         // rewarded video load button
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         showLoadingIndicator(R.id.rewarded_progress, false);
     }
 
-    // Interstitial Methods
+    // MARK: Interstitial Methods
 
     private void loadInterstitialAd() {
         String adUnit = getEditText(R.id.interstitial_ad_unit_id);
@@ -111,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Rewarded Video Methods
+    // MARK: Rewarded Video Methods
 
     private void loadRewardedVideoAd() {
         String adUnit = getEditText(R.id.rewarded_ad_unit_id);
@@ -135,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         enableButton(R.id.rewarded_play_btn, false);
     }
 
-    // MoPub Interstitial Listener
+    // MARK: MoPub Interstitial Listener
 
     MoPubInterstitial.InterstitialAdListener _interstitialAdListener = new MoPubInterstitial.InterstitialAdListener() {
         @Override
@@ -169,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    // MoPub Rewarded Video Listener
+    // MARK: MoPub Rewarded Video Listener
 
     MoPubRewardedVideoListener _rewardedAdListener = new MoPubRewardedVideoListener() {
         @Override

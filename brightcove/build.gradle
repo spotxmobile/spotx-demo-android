@@ -1,13 +1,5 @@
 apply plugin: 'com.android.application'
 
-repositories {
-    mavenCentral()
-    jcenter()
-    maven {
-        url 'http://repo.brightcove.com/releases'
-    }
-}
-
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.0"
@@ -28,10 +20,9 @@ android {
 }
 
 dependencies {
-    //compile 'com.spotxchange:spotx-brightcove:3.0.+'
-    compile "com.brightcove.player:android-sdk:4.+"
+    compile 'com.spotxchange:spotx-sdk-android:3.0.3'
+    compile 'com.brightcove.player:android-sdk:4.+'
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.0.0'
 }

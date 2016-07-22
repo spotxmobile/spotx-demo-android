@@ -13,7 +13,7 @@ import com.brightcove.player.model.Source;
 import com.brightcove.player.model.SourceAwareMetadataObject;
 import com.brightcove.player.model.Video;
 import com.brightcove.player.view.BrightcoveVideoView;
-import com.spotxchange.brightcove.SpotXBrightcoveAdapter;
+import com.spotxchange.v3.adapters.brightcove.SpotXBrightcoveAdapter;
 import com.spotxchange.v3.SpotX;
 
 import java.util.Collections;
