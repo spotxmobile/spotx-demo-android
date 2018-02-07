@@ -21,17 +21,28 @@
         android:text="85394"/>
 
     <Button
+        android:id="@+id/buttonPlayAd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play"
-        android:id="@+id/buttonPlayAd"
-        android:layout_below="@+id/editTextChannelId"
-        android:layout_alignLeft="@+id/editTextChannelId"
-        android:layout_alignStart="@+id/editTextChannelId"
-        android:layout_alignRight="@+id/editTextChannelId"
         android:layout_alignEnd="@+id/editTextChannelId"
+        android:layout_alignLeft="@+id/editTextChannelId"
+        android:layout_alignRight="@+id/editTextChannelId"
+        android:layout_alignStart="@+id/editTextChannelId"
+        android:layout_below="@+id/editTextChannelId"
+        android:text="Play Interstitial" />
+
+    <Button
+        android:id="@+id/buttonPlayAdInline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/buttonPlayAd"
+        android:layout_alignLeft="@+id/buttonPlayAd"
+        android:layout_alignRight="@+id/buttonPlayAd"
+        android:layout_alignStart="@+id/buttonPlayAd"
+        android:layout_below="@+id/buttonPlayAd"
+        android:layout_marginBottom="15dp"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"/>
+        android:text="Play Inline" />
 
     <ProgressBar
         android:layout_width="wrap_content"

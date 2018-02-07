@@ -1,5 +1,13 @@
 package com.spotxchange.simple;
 
+/**
+ * NOTE: This class is used to demo Interstitial ad placements.
+ * This class also contains logic for triggering an Inline ad placement,
+ * however, it doesn't demo Inline placements.
+ * For an Inline integration demo, look at InlineActivity.java
+ */
+
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,7 +29,10 @@ public class MainActivity extends AppCompatActivity implements AdLoader.Callback
 
     private EditText _editTextChannelId;
     private ProgressBar _progressBar;
-    private Button _buttonPlay;
+    private Button _buttonPlayInterstitial;
+    private Button _buttonPlayInline;
+
+    public final static String PARCEL_CHANNEL_ID = "channelID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +42,14 @@ public class MainActivity extends AppCompatActivity implements AdLoader.Callback
 
         _editTextChannelId = (EditText) findViewById(R.id.editTextChannelId);
         _progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        _buttonPlay = (Button) findViewById(R.id.buttonPlayAd);
-        _buttonPlay.setOnClickListener(this);
+
+        // Interstitial
+        _buttonPlayInterstitial = (Button) findViewById(R.id.buttonPlayAd);
+        _buttonPlayInterstitial.setOnClickListener(this);
+
+        // Inline
+        _buttonPlayInline = (Button) findViewById(R.id.buttonPlayAdInline);
+        _buttonPlayInline.setOnClickListener(this);
 
         showLoadingIndicator(false);
     }
@@ -42,15 +59,29 @@ public class MainActivity extends AppCompatActivity implements AdLoader.Callback
 
     @Override
     public void onClick(View view) {
-        loadAd();
+        switch (view.getId()) {
+            case R.id.buttonPlayAd:
+                loadAdInterstitial();
+                break;
+            case R.id.buttonPlayAdInline:
+                loadAdInline(view);
+                break;
+        }
     }
 
-    private void loadAd() {
+    private void loadAdInterstitial() {
         String channel = _editTextChannelId.getText().toString();
         if (!TextUtils.isEmpty(channel)) {
             AdLoader loader = new AdLoader(channel, 1, 10 /*seconds*/, this);
             loader.execute();
         }
+    }
+
+    private void loadAdInline(View view) {
+        Intent intent = new Intent(view.getContext(), com.spotxchange.simple.InlineActivity.class);
+        intent.putExtra(PARCEL_CHANNEL_ID, _editTextChannelId.getText().toString());
+        intent.putExtra("count", "1");
+        startActivity(intent);
     }
 
 
@@ -74,7 +105,8 @@ public class MainActivity extends AppCompatActivity implements AdLoader.Callback
 
     private void showLoadingIndicator(final boolean visible) {
         _progressBar.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
-        _buttonPlay.setEnabled(!visible);
+        _buttonPlayInterstitial.setEnabled(!visible);
+        _buttonPlayInline.setEnabled(!visible);
     }
 
     private void showNoAdsMessage() {

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context=".InlineActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textTitle"
+            android:text="SDK Inline"
+            android:textColor="#9ac83c"
+            android:textSize="20sp"
+            android:padding="4dp"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:id="@+id/headerSeparator"
+        android:layout_marginBottom="8dp"
+        android:background="#1b9dd0"
+        android:layout_below="@+id/header"/>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/headerSeparator"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="▼ Scroll Down for Ad ▼"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mollis gravida magna, ut faucibus mi. Nam pellentesque lectus rutrum, pretium lectus sed, tincidunt odio. Nullam sit amet cursus ligula. Aliquam erat volutpat. Sed eget dapibus ante. Ut aliquet porta sem vel consectetur. Interdum et malesuada fames ac ante ipsum primis in faucibus. In ligula enim, tempor at efficitur eu, dignissim et orci. Mauris eu fermentum ligula. Mauris rhoncus massa nec sem imperdiet vulputate et non est. Proin accumsan congue orci. Vestibulum sollicitudin turpis tristique cursus sodales. In ut mauris mattis, viverra lectus tempus, dictum nulla. Nulla egestas a mi a congue. Duis porta id velit quis dapibus.\n\nEtiam porta congue libero. Phasellus ipsum odio, vestibulum eu fermentum nec, mollis eu quam. Pellentesque cursus maximus magna, sed aliquet velit suscipit et. Morbi rutrum ipsum arcu, sed vestibulum mi luctus et. Maecenas tempor dolor in eros condimentum, id dignissim ex hendrerit. Aenean mattis justo nisi, vitae posuere eros mollis at. Duis accumsan porttitor iaculis. Nullam non venenatis augue. In egestas est sit amet ligula pharetra, sit amet porta nibh tristique.\n\nSed in scelerisque felis. Pellentesque vitae nulla id velit malesuada dictum. Donec laoreet dolor ut leo auctor, nec elementum sapien placerat. Sed nec quam eu turpis sollicitudin euismod. Ut fringilla nec ligula sed pellentesque. Mauris at dignissim eros. Sed condimentum ullamcorper vehicula. Phasellus in justo lorem. Integer sit amet libero orci. Sed fringilla euismod dignissim. Etiam vel dictum elit, eu tristique metus. Aliquam erat volutpat. Integer rhoncus sapien in lorem euismod consectetur. Quisque mollis elit mauris, eget cursus diam fringilla nec.\n\nPraesent eget dui eu quam consectetur viverra. In a porta felis, eu mattis enim. Aliquam erat volutpat. Etiam a mi facilisis, pretium purus in, semper nisl. Praesent quis accumsan quam. Vivamus vestibulum, libero bibendum luctus ultricies, nibh lectus tempus magna, a egestas lacus risus quis dolor. Ut ut porta neque. Sed lorem risus, placerat eget metus sit amet, ullamcorper fringilla ligula. Sed a est tellus.\n\nMauris sollicitudin tristique dolor, vel condimentum odio finibus in. Nam velit ex, aliquam eget aliquet a, mollis vel mauris. Ut ligula tortor, sollicitudin sit amet lectus vitae, finibus mollis leo. Duis accumsan dolor ac efficitur egestas. Aenean in neque turpis. Pellentesque eget dolor sem. Maecenas vitae volutpat tortor. Quisque eros elit, pulvinar a facilisis eget, finibus vitae libero. Nullam ac magna lacus. Nulla justo neque, dignissim id erat eu, finibus commodo velit. Donec a semper lectus, at congue nunc."
+                android:visibility="visible"/>
+
+            <FrameLayout
+                android:id="@+id/adContainer"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@android:color/black"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:descendantFocusability="blocksDescendants"></FrameLayout>
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/resizeSeekBar"
+                android:layout_margin="10dp"
+                android:max="100"
+                android:progress="100"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mollis gravida magna, ut faucibus mi. Nam pellentesque lectus rutrum, pretium lectus sed, tincidunt odio. Nullam sit amet cursus ligula. Aliquam erat volutpat. Sed eget dapibus ante. Ut aliquet porta sem vel consectetur. Interdum et malesuada fames ac ante ipsum primis in faucibus. In ligula enim, tempor at efficitur eu, dignissim et orci. Mauris eu fermentum ligula. Mauris rhoncus massa nec sem imperdiet vulputate et non est. Proin accumsan congue orci. Vestibulum sollicitudin turpis tristique cursus sodales. In ut mauris mattis, viverra lectus tempus, dictum nulla. Nulla egestas a mi a congue. Duis porta id velit quis dapibus.\n\nEtiam porta congue libero. Phasellus ipsum odio, vestibulum eu fermentum nec, mollis eu quam. Pellentesque cursus maximus magna, sed aliquet velit suscipit et. Morbi rutrum ipsum arcu, sed vestibulum mi luctus et. Maecenas tempor dolor in eros condimentum, id dignissim ex hendrerit. Aenean mattis justo nisi, vitae posuere eros mollis at. Duis accumsan porttitor iaculis. Nullam non venenatis augue. In egestas est sit amet ligula pharetra, sit amet porta nibh tristique.\n\nSed in scelerisque felis. Pellentesque vitae nulla id velit malesuada dictum. Donec laoreet dolor ut leo auctor, nec elementum sapien placerat. Sed nec quam eu turpis sollicitudin euismod. Ut fringilla nec ligula sed pellentesque. Mauris at dignissim eros. Sed condimentum ullamcorper vehicula. Phasellus in justo lorem. Integer sit amet libero orci. Sed fringilla euismod dignissim. Etiam vel dictum elit, eu tristique metus. Aliquam erat volutpat. Integer rhoncus sapien in lorem euismod consectetur. Quisque mollis elit mauris, eget cursus diam fringilla nec.\n\nPraesent eget dui eu quam consectetur viverra. In a porta felis, eu mattis enim. Aliquam erat volutpat. Etiam a mi facilisis, pretium purus in, semper nisl. Praesent quis accumsan quam. Vivamus vestibulum, libero bibendum luctus ultricies, nibh lectus tempus magna, a egestas lacus risus quis dolor. Ut ut porta neque. Sed lorem risus, placerat eget metus sit amet, ullamcorper fringilla ligula. Sed a est tellus.\n\nMauris sollicitudin tristique dolor, vel condimentum odio finibus in. Nam velit ex, aliquam eget aliquet a, mollis vel mauris. Ut ligula tortor, sollicitudin sit amet lectus vitae, finibus mollis leo. Duis accumsan dolor ac efficitur egestas. Aenean in neque turpis. Pellentesque eget dolor sem. Maecenas vitae volutpat tortor. Quisque eros elit, pulvinar a facilisis eget, finibus vitae libero. Nullam ac magna lacus. Nulla justo neque, dignissim id erat eu, finibus commodo velit. Donec a semper lectus, at congue nunc." />
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>
