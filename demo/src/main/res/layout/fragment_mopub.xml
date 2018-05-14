@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="5dp"
+    tools:context="com.spotxchange.testapp.MoPubFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".5">
+
+        <TextView
+            android:id="@+id/textInterstitialTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:text="@string/mopub_interstitial"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textChannel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textInterstitialTitle"
+            android:text="@string/ad_unit_id"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <EditText
+            android:id="@+id/interstitial_ad_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textChannel"
+            android:layout_toLeftOf="@+id/interstitial_spinner"
+            android:layout_toStartOf="@+id/interstitial_spinner"
+            android:background="@color/spotxLightGray"
+            android:hint="@string/ad_unit_id"
+            android:linksClickable="true"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:textAlignment="center"
+            android:textSize="14dp" />
+
+        <Spinner
+            android:id="@+id/interstitial_spinner"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textChannel"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_toLeftOf="@+id/interstitial_progress"
+            android:layout_toStartOf="@+id/interstitial_progress"
+            android:contextClickable="true"
+            android:dropDownSelector="@color/spotxGreen"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:spinnerMode="dialog" />
+
+        <ProgressBar
+            android:id="@+id/interstitial_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/interstitial_load_button"
+            android:layout_toStartOf="@+id/interstitial_load_button"
+            android:layout_alignBottom="@id/interstitial_spinner"
+            android:indeterminate="true" />
+
+        <Button
+            android:id="@+id/interstitial_load_button"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@id/interstitial_spinner"
+            android:text="@string/load" />
+
+        <Button
+            android:id="@+id/interstitial_play_button"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@id/interstitial_spinner"
+            android:text="@string/play" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".5">
+
+
+        <TextView
+            android:id="@+id/textRewardedVideoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:text="@string/mopub_rewarded_video"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textAdUnitId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textRewardedVideoTitle"
+            android:layout_marginBottom="5dp"
+            android:text="@string/ad_unit_id"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <EditText
+            android:id="@+id/rewarded_ad_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/rewarded_video_progress"
+            android:layout_toStartOf="@+id/rewarded_video_progress"
+            android:layout_below="@+id/textAdUnitId"
+            android:background="@color/spotxLightGray"
+            android:hint="@string/ad_unit_id"
+            android:linksClickable="true"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:textAlignment="center"
+            android:textSize="14dp" />
+
+        <ProgressBar
+            android:id="@+id/rewarded_video_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/rewarded_ad_unit"
+            android:layout_toLeftOf="@+id/rewarded_load_button"
+            android:layout_toStartOf="@+id/rewarded_load_button"
+            android:indeterminate="true" />
+
+        <Button
+            android:id="@+id/rewarded_load_button"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/rewarded_ad_unit"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:text="@string/load" />
+
+        <Button
+            android:id="@+id/rewarded_play_button"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_alignBottom="@+id/rewarded_ad_unit"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/play" />
+
+    </RelativeLayout>
+
+</LinearLayout>

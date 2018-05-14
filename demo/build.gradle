@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+repositories {
+    mavenCentral()
+    jcenter()
+    google()
+    maven {
+        url 'http://repo.brightcove.com/releases'
+    }
+}
+
+def VERSION_CODE = (new Date()).format('yyyyMMddHH').toInteger()
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '27.0.3'
+
+    defaultConfig {
+        applicationId "com.spotxchange.testapp"
+        versionName '2.0'
+        versionCode VERSION_CODE
+        minSdkVersion 16
+        targetSdkVersion 25
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def withoutExoPlayer = { exclude group: 'com.google.android.exoplayer', module: 'exoplayer' }
+
+    implementation 'com.android.support:support-vector-drawable:25.2.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:support-v13:25.2.0'
+    implementation 'com.android.support:appcompat-v7:25.2.0'
+
+    implementation 'com.spotxchange:spotx-sdk-android:4.0.0', withoutExoPlayer
+    implementation 'com.mopub:mopub-sdk:4.4.0', withoutExoPlayer
+    implementation 'com.google.android.gms:play-services-ads:12.0.1'
+    implementation 'com.brightcove.player:android-sdk:4.13.7'
+    implementation 'com.android.support:design:25.2.0'
+}

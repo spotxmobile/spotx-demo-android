@@ -1,0 +1,13 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorControlActivated">@color/spotxGreen</item>
+        <item name="colorControlHighlight">@color/spotxGreen</item>
+    </style>
+    <style name="Theme.CustomToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">@color/spotxWhite</item>
+        <item name="android:textColorPrimary">@color/spotxWhite</item>
+    </style>
+</resources>

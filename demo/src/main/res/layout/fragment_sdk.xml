@@ -1,0 +1,106 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:focusableInTouchMode="true"
+    tools:context=".main">
+
+    <LinearLayout
+        android:id="@+id/adTypeSelection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ToggleButton
+            android:id="@+id/selectInterstitial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_alignParentTop="true"
+            android:checked="true"
+            android:text="@string/interstitial"
+            android:textOff="@string/interstitial"
+            android:textOn="@string/interstitial" />
+
+        <ToggleButton
+            android:id="@+id/selectInline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/inline"
+            android:textOff="@string/inline"
+            android:textOn="@string/inline" />
+
+        <ToggleButton
+            android:id="@+id/selectResizable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/resizable"
+            android:textOff="@string/resizable"
+            android:textOn="@string/resizable" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/vpaidBox"
+        android:saveEnabled="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/adTypeSelection"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/vpaid"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <EditText
+        android:id="@+id/channelText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/vpaidBox"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:enabled="true"
+        android:gravity="center"
+        android:hint="@string/channel_id"
+        android:inputType="number"
+        android:lines="1"
+        android:saveEnabled="false" />
+
+    <TextView
+        android:id="@+id/channelId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/channelText"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="@string/channel_id" />
+
+    <ProgressBar
+        android:id="@+id/progressSpinner"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminate="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/channelId"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp">
+
+        <Button
+            android:id="@+id/playButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/play" />
+    </RelativeLayout>
+
+</RelativeLayout>

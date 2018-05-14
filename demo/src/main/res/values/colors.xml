@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="spotxBlack">#000000</color>
+    <color name="spotxWhite">#FFFFFF</color>
+
+    <color name="spotxGreen">#8ec641</color>
+
+    <color name="spotxBlue">#1b9dd0</color>
+
+    <color name="spotxLightGray">#E7E7E7</color>
+</resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="mopub_interstitial_channel_ids">
+        <item>MP4 Ad</item>
+        <item>VPAID Ad</item>
+        <item>Podded Ad</item>
+    </string-array>
+
+    <string-array name="mopub_interstitial_ad_units">
+        <item>3df9e9bc342b4e5fb70e9fe9d7774317</item>
+        <item>4981350975004acc8129b6a217f0fdff</item>
+        <item>bfd088a5d6aa48deb907583253ab39b5</item>
+    </string-array>
+
+    <string name="app_name">SpotX SDK Demo</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_brightcoveplayer">Brightcove Player</string>
+
+    <string name="tab_sdk">SDK</string>
+    <string name="tab_mopub">MoPub</string>
+    <string name="tab_brightcove">Brightcove</string>
+
+    <string name="interstitial">Interstitial</string>
+    <string name="inline">Inline</string>
+    <string name="resizable">Resizable</string>
+    <string name="vpaid">Use VPAID</string>
+    <string name="channel_id">Channel ID</string>
+
+    <string name="load">Load</string>
+    <string name="play">Play</string>
+
+    <string name="inline_header">▼ Scroll Down for Ad ▼</string>
+    <string name="ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mollis gravida magna, ut faucibus mi. Nam pellentesque lectus rutrum, pretium lectus sed, tincidunt odio. Nullam sit amet cursus ligula. Aliquam erat volutpat. Sed eget dapibus ante. Ut aliquet porta sem vel consectetur. Interdum et malesuada fames ac ante ipsum primis in faucibus. In ligula enim, tempor at efficitur eu, dignissim et orci. Mauris eu fermentum ligula. Mauris rhoncus massa nec sem imperdiet vulputate et non est. Proin accumsan congue orci. Vestibulum sollicitudin turpis tristique cursus sodales. In ut mauris mattis, viverra lectus tempus, dictum nulla. Nulla egestas a mi a congue. Duis porta id velit quis dapibus.\n\nEtiam porta congue libero. Phasellus ipsum odio, vestibulum eu fermentum nec, mollis eu quam. Pellentesque cursus maximus magna, sed aliquet velit suscipit et. Morbi rutrum ipsum arcu, sed vestibulum mi luctus et. Maecenas tempor dolor in eros condimentum, id dignissim ex hendrerit. Aenean mattis justo nisi, vitae posuere eros mollis at. Duis accumsan porttitor iaculis. Nullam non venenatis augue. In egestas est sit amet ligula pharetra, sit amet porta nibh tristique.\n\nSed in scelerisque felis. Pellentesque vitae nulla id velit malesuada dictum. Donec laoreet dolor ut leo auctor, nec elementum sapien placerat. Sed nec quam eu turpis sollicitudin euismod. Ut fringilla nec ligula sed pellentesque. Mauris at dignissim eros. Sed condimentum ullamcorper vehicula. Phasellus in justo lorem. Integer sit amet libero orci. Sed fringilla euismod dignissim. Etiam vel dictum elit, eu tristique metus. Aliquam erat volutpat. Integer rhoncus sapien in lorem euismod consectetur. Quisque mollis elit mauris, eget cursus diam fringilla nec.\n\nPraesent eget dui eu quam consectetur viverra. In a porta felis, eu mattis enim. Aliquam erat volutpat. Etiam a mi facilisis, pretium purus in, semper nisl. Praesent quis accumsan quam. Vivamus vestibulum, libero bibendum luctus ultricies, nibh lectus tempus magna, a egestas lacus risus quis dolor. Ut ut porta neque. Sed lorem risus, placerat eget metus sit amet, ullamcorper fringilla ligula. Sed a est tellus.\n\nMauris sollicitudin tristique dolor, vel condimentum odio finibus in. Nam velit ex, aliquam eget aliquet a, mollis vel mauris. Ut ligula tortor, sollicitudin sit amet lectus vitae, finibus mollis leo. Duis accumsan dolor ac efficitur egestas. Aenean in neque turpis. Pellentesque eget dolor sem. Maecenas vitae volutpat tortor. Quisque eros elit, pulvinar a facilisis eget, finibus vitae libero. Nullam ac magna lacus. Nulla justo neque, dignissim id erat eu, finibus commodo velit. Donec a semper lectus, at congue nunc.</string>
+
+    <string name="mopub_interstitial">MoPub Interstitial</string>
+    <string name="mopub_rewarded_video">MoPub Rewarded Video</string>
+    <string name="ad_unit_id">Ad Unit ID</string>
+
+</resources>

@@ -1,0 +1,49 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="spotxUsePodding"
+        android:title="Enable podding" />
+    <EditTextPreference
+        android:defaultValue="60"
+        android:dependency="spotxUsePodding"
+        android:inputType="number"
+        android:key="spotxAdDuration"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:summary="60"
+        android:title="Max ad duration" />
+    <EditTextPreference
+        android:defaultValue="3"
+        android:dependency="spotxUsePodding"
+        android:inputType="number"
+        android:key="spotxAdCount"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:summary="3"
+        android:title="Ad count" />
+    <EditTextPreference
+        android:defaultValue="180"
+        android:dependency="spotxUsePodding"
+        android:inputType="number"
+        android:key="spotxPodDuration"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:summary="180"
+        android:title="Max pod duration" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="spotxGDPREnable"
+        android:title="Enable GDPR" />
+    <EditTextPreference
+        android:defaultValue="GDPR Consent String"
+        android:dependency="spotxGDPREnable"
+        android:inputType="text"
+        android:key="spotxGDPRConsent"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:summary="%s"
+        android:title="Consent String" />
+
+</PreferenceScreen>
