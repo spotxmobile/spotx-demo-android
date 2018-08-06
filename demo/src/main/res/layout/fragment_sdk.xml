@@ -7,6 +7,7 @@
 
     <LinearLayout
         android:id="@+id/adTypeSelection"
+        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -16,11 +17,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_alignParentTop="true"
             android:checked="true"
             android:text="@string/interstitial"
             android:textOff="@string/interstitial"
-            android:textOn="@string/interstitial" />
+            android:textOn="@string/interstitial"
+            android:textSize="11sp" />
 
         <ToggleButton
             android:id="@+id/selectInline"
@@ -29,7 +30,8 @@
             android:layout_weight="1"
             android:text="@string/inline"
             android:textOff="@string/inline"
-            android:textOn="@string/inline" />
+            android:textOn="@string/inline"
+            android:textSize="11sp" />
 
         <ToggleButton
             android:id="@+id/selectResizable"
@@ -38,7 +40,19 @@
             android:layout_weight="1"
             android:text="@string/resizable"
             android:textOff="@string/resizable"
-            android:textOn="@string/resizable" />
+            android:textOn="@string/resizable"
+            android:textSize="11sp" />
+
+        <ToggleButton
+            android:id="@+id/selectDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/dialog"
+            android:textOff="@string/dialog"
+            android:textOn="@string/dialog"
+            android:textSize="11sp" />
+
     </LinearLayout>
 
     <CheckBox

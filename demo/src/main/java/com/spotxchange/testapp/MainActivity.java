@@ -14,8 +14,11 @@ import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.spotxchange.v4.SpotX;
+
+import java.lang.reflect.Field;
 
 public class MainActivity extends AppCompatActivity
         implements TabLayout.OnTabSelectedListener, ViewPager.OnPageChangeListener {
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity
     private ViewPager _viewPager;
     private TabLayout _tabLayout;
     private Menu _toolbarMenu;
+    private TextView _sdkVersionString;
 
     private static int _currentTab; // Store current tab statically so it can survive the activity being re-created
 
@@ -57,6 +61,18 @@ public class MainActivity extends AppCompatActivity
 
         _tabLayout.getTabAt(_currentTab).select();
         _viewPager.setCurrentItem(_currentTab);
+
+        // SDK Version String
+        String sdkVersion = "4.x.x";
+        try {
+            Class<?> klass = Class.forName("com.spotxchange.testapp.BuildConfig");
+            Field field = klass.getDeclaredField("VERSION_NAME");
+            sdkVersion = field.get(null).toString();
+        } catch(Exception e) {
+            // don't care
+        }
+        _sdkVersionString = (TextView) findViewById(R.id.sdk_version_string);
+        _sdkVersionString.setText("VERSION " + sdkVersion);
     }
 
     // MARK: Menu actions

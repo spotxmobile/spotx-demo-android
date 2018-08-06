@@ -14,9 +14,9 @@ import android.widget.FrameLayout;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import com.spotxchange.v4.SpotXResizableAdPlayer;
 import com.spotxchange.v4.SpotXAdPlayer;
 import com.spotxchange.v4.SpotXAdRequest;
-import com.spotxchange.v4.SpotXResizableAdPlayer;
 import com.spotxchange.v4.datamodel.SpotXAd;
 import com.spotxchange.v4.datamodel.SpotXAdGroup;
 
@@ -185,7 +185,7 @@ public class SDKResizableActivity extends AppCompatActivity implements SpotXAdPl
             @Override
             public void run() {
                 Toast.makeText(SDKResizableActivity.this, "Ad - Error", Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "[Ad] Error!");
+                Log.e(TAG, "[Ad] Error!");
                 _adContainer.setVisibility(View.INVISIBLE);
             }
         });

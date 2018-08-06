@@ -24,6 +24,7 @@
     <string name="interstitial">Interstitial</string>
     <string name="inline">Inline</string>
     <string name="resizable">Resizable</string>
+    <string name="dialog">Dialog</string>
     <string name="vpaid">Use VPAID</string>
     <string name="channel_id">Channel ID</string>
 

@@ -34,10 +34,12 @@ public class SDKFragment extends Fragment implements SpotXAdPlayer.Observer,
     private ProgressBar _loadingIndicator;
     private Settings _settings;
 
-    private ToggleButton[] _toggles = { null, null, null };
+    private ToggleButton[] _toggles = { null, null, null, null };
+
     static final int INTERSTITIAL = 0;
     static final int INLINE = 1;
     static final int RESIZABLE = 2;
+    static final int DIALOG = 3;
 
     // MARK: Activity
 
@@ -73,9 +75,10 @@ public class SDKFragment extends Fragment implements SpotXAdPlayer.Observer,
         getView().findViewById(R.id.playButton).setOnClickListener(this);
 
         // Set up toggle buttons as a multi-select
-        _toggles[0] = (ToggleButton)getView().findViewById(R.id.selectInterstitial);
-        _toggles[1] = (ToggleButton)getView().findViewById(R.id.selectInline);
-        _toggles[2] = (ToggleButton)getView().findViewById(R.id.selectResizable);
+        _toggles[INTERSTITIAL] = (ToggleButton)getView().findViewById(R.id.selectInterstitial);
+        _toggles[INLINE] = (ToggleButton)getView().findViewById(R.id.selectInline);
+        _toggles[RESIZABLE] = (ToggleButton)getView().findViewById(R.id.selectResizable);
+        _toggles[DIALOG] = (ToggleButton)getView().findViewById(R.id.selectDialog);
 
         // Deselect all toggle buttons except the current selection
         int selection = _settings.getInt(Settings.KEY_PRESENTATION);
@@ -136,12 +139,13 @@ public class SDKFragment extends Fragment implements SpotXAdPlayer.Observer,
             _playInline();
         } else if (_toggles[RESIZABLE].isChecked()) {
             _playResizable();
+        } else if (_toggles[DIALOG].isChecked()) {
+            _playDialog();
         }
     }
 
     private void _playInterstitial() {
         showLoadingIndicator(true);
-        final String channelId = getChannelId();
 
         // create interstitial presenter
         SpotXInterstitialAdPlayer player = new SpotXInterstitialAdPlayer();
@@ -157,6 +161,11 @@ public class SDKFragment extends Fragment implements SpotXAdPlayer.Observer,
     private void _playResizable() {
         Intent intent = new Intent(getActivity(), SDKResizableActivity.class);
         startActivity(intent);
+    }
+
+    private void _playDialog() {
+        Dialog d = new Dialog(getActivity());
+        d.show();
     }
 
     private void showEmptyAdGroupToast() {
@@ -216,15 +225,16 @@ public class SDKFragment extends Fragment implements SpotXAdPlayer.Observer,
     }
 
     private void playButtonEnabled(boolean enabled) {
-        if (getView() != null) {
-            getView().findViewById(R.id.playButton).setEnabled(enabled);
+        View v = getView();
+        if (v != null) {
+            v.findViewById(R.id.playButton).setEnabled(enabled);
         }
     }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         // Toggle VPAID
-        _settings.set(Settings.KEY_VPAID, Boolean.valueOf(isChecked));
+        _settings.set(Settings.KEY_VPAID, isChecked);
     }
 
     // MARK: SpotXObserver
@@ -288,7 +298,7 @@ public class SDKFragment extends Fragment implements SpotXAdPlayer.Observer,
             @Override
             public void run() {
                 Toast.makeText(SDKFragment.this.getActivity(), "Ad - Error", Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "[Ad] Error!");
+                Log.e(TAG, "[Ad] Error!");
                 showLoadingIndicator(false);
             }
         });
