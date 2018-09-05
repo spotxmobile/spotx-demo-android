@@ -8,9 +8,10 @@ package com.spotxchange.simple;
  */
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +39,25 @@ public class MainActivity extends AppCompatActivity implements AdLoader.Callback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        View contentView = (View) findViewById(android.R.id.content);
+
+        contentView.getViewTreeObserver().addOnGlobalFocusChangeListener(new android.view.ViewTreeObserver.OnGlobalFocusChangeListener() {
+            public void onGlobalFocusChanged(View oldFocus, View newFocus) {
+                int i = 0;
+                i++;
+                if (newFocus != null) {
+                    newFocus.setBackgroundColor(Color.BLUE);
+                }
+            }
+        });
+
+        View focusedView = contentView.findFocus();
+        if (focusedView != null) {
+            // Shouldn't have any
+            return;
+        }
+
         SpotX.initialize(this);
 
         _editTextChannelId = (EditText) findViewById(R.id.editTextChannelId);
@@ -99,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements AdLoader.Callback
             showNoAdsMessage();
         }
         else{
+            adGroup.focusable = false;
             showAd(adGroup);
         }
     }

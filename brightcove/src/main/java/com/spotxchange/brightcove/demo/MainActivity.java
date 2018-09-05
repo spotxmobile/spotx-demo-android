@@ -1,7 +1,9 @@
 package com.spotxchange.brightcove.demo;
 
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.brightcove.player.event.Event;
 import com.brightcove.player.event.EventEmitter;
@@ -13,8 +15,8 @@ import com.brightcove.player.model.Source;
 import com.brightcove.player.model.SourceAwareMetadataObject;
 import com.brightcove.player.model.Video;
 import com.brightcove.player.view.BrightcoveVideoView;
-import com.spotxchange.v3.adapters.brightcove.SpotXBrightcoveAdapter;
 import com.spotxchange.v3.SpotX;
+import com.spotxchange.v3.adapters.brightcove.SpotXBrightcoveAdapter;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -32,6 +34,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.spotxchange.brightcove.demo.R.layout.activity_main);
+
+        View contentView = (View) findViewById(android.R.id.content);
+
+        contentView.getViewTreeObserver().addOnGlobalFocusChangeListener(new android.view.ViewTreeObserver.OnGlobalFocusChangeListener() {
+            public void onGlobalFocusChanged(View oldFocus, View newFocus) {
+                int i = 0;
+                i++;
+                if (newFocus != null) {
+                    newFocus.setBackgroundColor(Color.BLUE);
+                }
+            }
+        });
+
+        View focusedView = contentView.findFocus();
+        if (focusedView != null) {
+            // Shouldn't have any
+            return;
+        }
+
         setup();
         playContent();
     }

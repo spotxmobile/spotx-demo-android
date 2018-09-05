@@ -11,12 +11,14 @@ package com.spotxchange.simple;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.SeekBar;
@@ -42,6 +44,26 @@ public class InlineActivity extends Activity implements SpotXAdGroup.Observer {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sdkinline);
+
+        View contentView = (View) findViewById(android.R.id.content);
+
+        contentView.getViewTreeObserver().addOnGlobalFocusChangeListener(new android.view.ViewTreeObserver.OnGlobalFocusChangeListener() {
+            public void onGlobalFocusChanged(View oldFocus, View newFocus) {
+                int i = 0;
+                i++;
+                String stack = buildStackTraceString(Thread.currentThread().getStackTrace());
+                if (newFocus != null) {
+                    newFocus.setBackgroundColor(Color.BLUE);
+                }
+            }
+        });
+
+        View focusedView = contentView.findFocus();
+        if (focusedView != null) {
+            // Shouldn't have any
+            return;
+        }
+
         Intent intent = getIntent();
         _channelID = intent.getStringExtra(MainActivity.PARCEL_CHANNEL_ID);
         _frameLayout = (FrameLayout)findViewById(R.id.adContainer);
@@ -51,10 +73,33 @@ public class InlineActivity extends Activity implements SpotXAdGroup.Observer {
         _resizeSeekBar.setEnabled(false);
         _resizeSeekBar.setOnSeekBarChangeListener(_resizeSeekBarChangeListener);
 
+        contentView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View newFocus, boolean hasFocus) {
+                int i = 0;
+                i++;
+                String stack = buildStackTraceString(Thread.currentThread().getStackTrace());
+                if (newFocus != null) {
+                    newFocus.setBackgroundColor(Color.RED);
+                }
+            }
+        });
+
         // init SpotX
         SpotX.initialize(getApplicationContext());
 
         playAd();
+    }
+
+    private static String buildStackTraceString(final StackTraceElement[] elements) {
+        StringBuilder sb = new StringBuilder();
+        if (elements != null && elements.length > 0) {
+            for (StackTraceElement element : elements) {
+                sb.append(element.toString());
+                sb.append('\n');
+            }
+        }
+        return sb.toString();
     }
 
     @Override
@@ -86,6 +131,7 @@ public class InlineActivity extends Activity implements SpotXAdGroup.Observer {
                 try {
                     final SpotXAdGroup adGroup = future.get();
                     if(adGroup != null) {
+                        adGroup.focusable = false;
                         adGroup.registerObserver(com.spotxchange.simple.InlineActivity.this);
 
                         new Handler(Looper.getMainLooper()).post(new Runnable() {

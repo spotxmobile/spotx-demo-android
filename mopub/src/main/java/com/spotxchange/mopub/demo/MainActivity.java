@@ -1,9 +1,10 @@
 package com.spotxchange.mopub.demo;
 
+import android.graphics.Color;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -15,7 +16,6 @@ import com.mopub.mobileads.MoPubInterstitial;
 import com.mopub.mobileads.MoPubRewardedVideoListener;
 import com.spotxchange.v3.adapters.mopub.SpotXRewardedVideo;
 
-
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +26,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        View contentView = (View) findViewById(android.R.id.content);
+
+        contentView.getViewTreeObserver().addOnGlobalFocusChangeListener(new android.view.ViewTreeObserver.OnGlobalFocusChangeListener() {
+            public void onGlobalFocusChanged(View oldFocus, View newFocus) {
+                int i = 0;
+                i++;
+                if (newFocus != null) {
+                    newFocus.setBackgroundColor(Color.BLUE);
+                }
+            }
+        });
+
+        View focusedView = contentView.findFocus();
+        if (focusedView != null) {
+            // Shouldn't have any
+            return;
+        }
 
         MoPub.onCreate(this);
         setupMoPubInterstitial();
