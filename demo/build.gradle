@@ -19,7 +19,7 @@ android {
         applicationId "com.spotxchange.testapp"
         versionName '4.1.0'
         versionCode VERSION_CODE
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 25
         vectorDrawables.useSupportLibrary = true
     }
