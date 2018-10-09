@@ -7,20 +7,24 @@ repositories {
     maven {
         url 'http://repo.brightcove.com/releases'
     }
+    // %+L // For local deployment, include local AARs
+    // %+L flatDir {
+    // %+L     dirs '%SDK_DIR%/build'
+    // %+L }
 }
 
 def VERSION_CODE = (new Date()).format('yyyyMMddHH').toInteger()
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "com.spotxchange.testapp"
-        versionName '4.1.0'
+        versionName '4.2.0'
         versionCode VERSION_CODE
         minSdkVersion 19
-        targetSdkVersion 25
+        targetSdkVersion 26
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
@@ -34,15 +38,16 @@ android {
 dependencies {
     def withoutExoPlayer = { exclude group: 'com.google.android.exoplayer', module: 'exoplayer' }
 
-    implementation 'com.android.support:support-vector-drawable:25.2.0'
+    implementation 'com.android.support:support-vector-drawable:26.1.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:support-v13:25.2.0'
-    implementation 'com.android.support:appcompat-v7:25.2.0'
+    implementation 'com.android.support:support-v13:26.1.0'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
 
+    // implementation (name:'spotx-sdk-android-%SDK_VERSION%', ext:'aar')   // ⬅ local, ⬇ production
     implementation 'com.spotxchange:spotx-sdk-android:4.+', withoutExoPlayer
     implementation 'com.mopub:mopub-sdk:4.4.0', withoutExoPlayer
-    implementation 'com.google.android.gms:play-services-ads:12.0.1'
+    implementation 'com.google.android.gms:play-services-base:12.0.1'
     implementation 'com.brightcove.player:android-sdk:4.13.7'
-    implementation 'com.android.support:design:25.2.0'
+    implementation 'com.android.support:design:26.1.0'
 }

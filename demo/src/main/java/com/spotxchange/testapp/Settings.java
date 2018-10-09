@@ -72,6 +72,12 @@ public class Settings {
             editor.putString("IABConsent_SubjectToGDPR", "1");
             editor.putString("IABConsent_ConsentString", gdprConsent);
             editor.commit();
+        } else {
+            // Need to remove GDPR from the SharedPreferences, or they'll be used the next time the demo is run
+            SharedPreferences.Editor editor = _pref.edit();
+            editor.remove("IABConsent_SubjectToGDPR");
+            editor.remove("IABConsent_ConsentString");
+            editor.commit();
         }
 
         // This is what KVPs look like where `multiple=false`
