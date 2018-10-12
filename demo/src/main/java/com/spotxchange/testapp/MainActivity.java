@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.MobileAds;
 import com.spotxchange.v4.SpotX;
 
 import java.lang.reflect.Field;
@@ -33,7 +34,8 @@ public class MainActivity extends AppCompatActivity
     public enum Fragments {
         SDK,
         MOPUB,
-        BRIGHTCOVE
+        BRIGHTCOVE,
+        GMA
     }
 
     /** Currently-selected screen. */
@@ -177,6 +179,8 @@ public class MainActivity extends AppCompatActivity
                     return new MoPubFragment();
                 case BRIGHTCOVE:
                     return new BrightcoveFragment();
+                case GMA:
+                    return new GmaFragment();
             }
             return new Fragment();
         }

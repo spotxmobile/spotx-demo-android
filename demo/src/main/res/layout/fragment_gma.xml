@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="5dp"
+    tools:context="com.spotxchange.testapp.GmaFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".25">
+
+        <TextView
+            android:id="@+id/titleAppId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:text="@string/gma_appid"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/appId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/titleAppId"
+            android:background="@color/spotxLightGray"
+            android:hint="@string/gma_appid"
+            android:linksClickable="true"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:textAlignment="center"
+            android:textSize="14dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".25">
+
+        <TextView
+            android:id="@+id/titleInterstital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:text="@string/gma_interstitial"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/interstitialId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignBaseline="@+id/buttonInterstitial"
+            android:layout_toLeftOf="@+id/buttonInterstitial"
+            android:layout_toStartOf="@+id/buttonInterstitial"
+            android:background="@color/spotxLightGray"
+            android:hint="@string/ad_unit_id"
+            android:linksClickable="true"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:textAlignment="center"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/buttonInterstitial"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleInterstital"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/play" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".5">
+
+        <TextView
+            android:id="@+id/titleRewarded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:text="@string/gma_rewarded_video"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/rewardedId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignBaseline="@+id/buttonRewarded"
+            android:layout_toLeftOf="@+id/buttonRewarded"
+            android:layout_toStartOf="@+id/buttonRewarded"
+            android:background="@color/spotxLightGray"
+            android:hint="@string/ad_unit_id"
+            android:linksClickable="true"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:textAlignment="center"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/buttonRewarded"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleRewarded"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/play" />
+
+    </RelativeLayout>
+
+</LinearLayout>

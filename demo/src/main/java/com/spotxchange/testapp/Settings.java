@@ -32,6 +32,11 @@ public class Settings {
     public static final String KEY_MOPUB_INTERSTITIAL   = "spotxMoPubI";
     public static final String KEY_MOPUB_REWARDED       = "spotxMoPubR";
 
+    // GMA IDs
+    public static final String KEY_GMA_APP              = "spotxGmaA";
+    public static final String KEY_GMA_INTERSTITIAL     = "spotxGmaI";
+    public static final String KEY_GMA_REWARDED         = "spotxGmaR";
+
     private SharedPreferences _pref;
 
     /** New Settings object with the given context. */
@@ -96,7 +101,11 @@ public class Settings {
 
     /** Retrieves a string value with a default. */
     public String getString(String name, String defValue) {
-        return _pref.getString(name, defValue);
+        String res = _pref.getString(name, defValue);
+        if (res == null || res.length() == 0) {
+            res = defValue;
+        }
+        return res;
     }
 
     /** Retrieves a string value. */

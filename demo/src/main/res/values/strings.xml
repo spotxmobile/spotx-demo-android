@@ -19,7 +19,8 @@
 
     <string name="tab_sdk">SDK</string>
     <string name="tab_mopub">MoPub</string>
-    <string name="tab_brightcove">Brightcove</string>
+    <string name="tab_brightcove">BCOV</string>
+    <string name="tab_gma">GMA</string>
 
     <string name="interstitial">Interstitial</string>
     <string name="inline">Inline</string>
@@ -37,5 +38,9 @@
     <string name="mopub_interstitial">MoPub Interstitial</string>
     <string name="mopub_rewarded_video">MoPub Rewarded Video</string>
     <string name="ad_unit_id">Ad Unit ID</string>
+
+    <string name="gma_appid">GMA App Id</string>
+    <string name="gma_interstitial">Interstitial Ad</string>
+    <string name="gma_rewarded_video">Rewarded Video</string>
 
 </resources>
