@@ -34,11 +34,10 @@ public class GmaFragment extends Fragment {
 
     private Settings _settings;
 
-    private static final String DEFAULT_APP_ID          = "ca-app-pub-9627326094741214~4252533337";
+    private static final String APP_ID                  = "ca-app-pub-9627326094741214~4252533337";
     private static final String DEFAULT_INTERSTITIAL_ID = "ca-app-pub-9627326094741214/2249735261";
     private static final String DEFAULT_REWARDED_ID     = "ca-app-pub-9627326094741214/3088221946";
 
-    private EditText _appId;
     private EditText _interstitialId;
     private EditText _rewardedId;
 
@@ -59,11 +58,9 @@ public class GmaFragment extends Fragment {
 
         _settings = new Settings(getActivity());
 
-        _appId = (EditText)getView().findViewById(R.id.appId);
         _interstitialId = (EditText)getView().findViewById(R.id.interstitialId);
         _rewardedId = (EditText)getView().findViewById(R.id.rewardedId);
 
-        setupTextFieldForKey(_appId, Settings.KEY_GMA_APP, DEFAULT_APP_ID);
         setupTextFieldForKey(_interstitialId, Settings.KEY_GMA_INTERSTITIAL, DEFAULT_INTERSTITIAL_ID);
         setupTextFieldForKey(_rewardedId, Settings.KEY_GMA_REWARDED, DEFAULT_REWARDED_ID);
 
@@ -88,7 +85,7 @@ public class GmaFragment extends Fragment {
     // MARK: AD PLAYBACK
 
     private void showInterstitial() {
-        MobileAds.initialize(getActivity(), _settings.getString(Settings.KEY_GMA_APP, DEFAULT_APP_ID));
+        MobileAds.initialize(getActivity(), APP_ID);
         _interstitialAd = new InterstitialAd(getActivity());
         _interstitialAd.setAdUnitId(_settings.getString(Settings.KEY_GMA_INTERSTITIAL, DEFAULT_INTERSTITIAL_ID));
 
@@ -116,7 +113,7 @@ public class GmaFragment extends Fragment {
     }
 
     private void showRewarded() {
-        MobileAds.initialize(getActivity(), _settings.getString(Settings.KEY_GMA_APP, DEFAULT_APP_ID));
+        MobileAds.initialize(getActivity(), APP_ID);
         _rewardedAd = MobileAds.getRewardedVideoAdInstance(getActivity());
         _rewardedAd.setRewardedVideoAdListener(new RewardedVideoAdListener() {
             @Override

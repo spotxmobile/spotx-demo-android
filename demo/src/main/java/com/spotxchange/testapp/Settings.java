@@ -9,7 +9,7 @@ import com.spotxchange.v4.SpotXAdRequest;
 public class Settings {
 
     // Application API key
-    public static final String API_KEY                  = "apikey-1234";
+    public static final String API_KEY                  = "apikey-default";
 
     // Default channel
     public static final String DEFAULT_CHANNEL_ID       = "85394";
@@ -33,7 +33,6 @@ public class Settings {
     public static final String KEY_MOPUB_REWARDED       = "spotxMoPubR";
 
     // GMA IDs
-    public static final String KEY_GMA_APP              = "spotxGmaA";
     public static final String KEY_GMA_INTERSTITIAL     = "spotxGmaI";
     public static final String KEY_GMA_REWARDED         = "spotxGmaR";
 

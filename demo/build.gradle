@@ -13,11 +13,11 @@ def VERSION_CODE = (new Date()).format('yyyyMMddHH').toInteger()
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '27.0.3'
+    buildToolsVersion '28.0.3'
 
     defaultConfig {
         applicationId "com.spotxchange.testapp"
-        versionName '4.3.0'
+        versionName '4.3.4'
         versionCode VERSION_CODE
         minSdkVersion 19
         targetSdkVersion 26
@@ -42,8 +42,8 @@ dependencies {
 
     implementation 'com.spotxchange:spotx-sdk-android:4.+', withoutExoPlayer
     implementation 'com.mopub:mopub-sdk:4.4.0', withoutExoPlayer
-    implementation 'com.google.android.gms:play-services-base:12.0.1'
-    implementation 'com.google.android.gms:play-services-ads:12.0.1'
+    implementation 'com.google.android.gms:play-services-base:16.0.1'
+    implementation 'com.google.android.gms:play-services-ads:17.1.2'
     implementation 'com.brightcove.player:android-sdk:4.13.7'
     implementation 'com.android.support:design:26.1.0'
 }

@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:node="merge">
+
+        <!-- Replace with your own App ID -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-9627326094741214~4252533337"/>
+
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize"
