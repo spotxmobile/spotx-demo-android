@@ -17,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId "com.spotxchange.testapp"
-        versionName '4.3.4'
+        versionName '4.3.5'
         versionCode VERSION_CODE
         minSdkVersion 19
         targetSdkVersion 26
