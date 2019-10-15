@@ -17,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId "com.spotxchange.testapp"
-        versionName '4.4.1'
+        versionName '4.5.0'
         versionCode VERSION_CODE
         minSdkVersion 19
         targetSdkVersion 26
@@ -40,10 +40,10 @@ dependencies {
     implementation 'com.android.support:support-v13:26.1.0'
     implementation 'com.android.support:appcompat-v7:26.1.0'
 
-    implementation 'com.spotxchange:spotx-sdk-android:4.4.1', withoutExoPlayer
-    implementation 'com.mopub:mopub-sdk:4.4.0', withoutExoPlayer
+    implementation 'com.spotxchange:spotx-sdk-android:4.5.0', withoutExoPlayer
     implementation 'com.google.android.gms:play-services-base:16.0.1'
-    implementation 'com.google.android.gms:play-services-ads:17.1.2'
+    implementation 'com.google.android.gms:play-services-ads:16.0.0'
+    implementation 'com.mopub:mopub-sdk:4.4.0', withoutExoPlayer
     implementation 'com.brightcove.player:android-sdk:4.13.7'
     implementation 'com.android.support:design:26.1.0'
 }

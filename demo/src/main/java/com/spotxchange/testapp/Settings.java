@@ -9,7 +9,7 @@ import com.spotxchange.v4.SpotXAdRequest;
 public class Settings {
 
     // Application API key
-    public static final String API_KEY                  = "apikey-default";
+    public static final String API_KEY                  = "11111111111111111111111111111111";
 
     // Default channel
     public static final String DEFAULT_CHANNEL_ID       = "85394";
